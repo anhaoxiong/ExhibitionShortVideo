@@ -1,0 +1,27 @@
+//
+//  PrefixHeader.pch
+//  ShortVideo
+//
+//  Created by hxiongan on 2019/4/8.
+//  Copyright © 2019年 ahx. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+
+#import <UIKit/UIKit.h>
+
+#define MAS_SHORTHAND
+#define MAS_SHORTHAND_GLOBALS
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:((CGFloat)r)/255.0 green:((CGFloat)b)/255.0 blue:((CGFloat)b)/255.0 alpha:1]
+#define RGBCOLOR_ALPHA(r,g,b,a) [UIColor colorWithRed:((CGFloat)r)/255.0 green:((CGFloat)b)/255.0 blue:((CGFloat)b)/255.0 alpha:a]
+#define COMMON_BACKGROUND_COLOR [UIColor colorWithWhite:.2 alpha:.8]
+
+#import <Masonry.h>
+#import "UIView+Alert.h"
+#import "NSObject+Auth.h"
+#import "UIView+Animation.h"
+#import "UIView+LSCore.h"
+
+#endif /* PrefixHeader_pch */
