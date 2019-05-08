@@ -110,14 +110,14 @@
 + (NSInteger)suitableVideoBitrateWithSize:(CGSize)videoSize {
     
     if (videoSize.width + videoSize.height > 720 + 1280) {
-        // 1080P 的，使用 6M 码率
+        // 1080P 的，使用 6M 码率比较合理
         return 6 * 1000 * 1000;
     } else if (videoSize.width + videoSize.height > 540 + 960) {
-        // 720P  的，使用 3M 码率
-        return 3 * 1000 * 1000;
+        // 720P  的，使用 3M 码率比较合理，这里选用 4M
+        return 4 * 1000 * 1000;
     } else if (videoSize.width + videoSize.height > 360 + 640) {
-        // 小于 360P ~ 540P 之间的使用 1.5 M 码率
-        return 1.5 * 1000 * 1000;
+        // 小于 360P ~ 540P 之间的使用 1.5 M 码率比较合理，这里使用 2M
+        return 2 * 1000 * 1000;
     } else {
         return 1.0 * 1000 * 1000;
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B1D5CEB7A973A8A7A1772CF3 /* libPods-ExhibitionShortVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F68CEA3E1B63CA7F8D63B4 /* libPods-ExhibitionShortVideo.a */; };
+		BC6E0C492282D8BD0072A4B1 /* qiniu_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6E0C482282D8BD0072A4B1 /* qiniu_logo@2x.png */; };
 		BCFC8C4F228128CD0012288F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFC8C4E228128CD0012288F /* AppDelegate.m */; };
 		BCFC8C57228128D00012288F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8C56228128D00012288F /* Assets.xcassets */; };
 		BCFC8C5A228128D00012288F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8C58228128D00012288F /* LaunchScreen.storyboard */; };
@@ -578,6 +579,7 @@
 /* Begin PBXFileReference section */
 		33E9A5D8B81C04F8F5BB741B /* Pods-ExhibitionShortVideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExhibitionShortVideo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExhibitionShortVideo/Pods-ExhibitionShortVideo.debug.xcconfig"; sourceTree = "<group>"; };
 		AE12E6BF3AAFFB7F079D0DB7 /* Pods-ExhibitionShortVideo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExhibitionShortVideo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExhibitionShortVideo/Pods-ExhibitionShortVideo.release.xcconfig"; sourceTree = "<group>"; };
+		BC6E0C482282D8BD0072A4B1 /* qiniu_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qiniu_logo@2x.png"; sourceTree = "<group>"; };
 		BCFC8C4A228128CD0012288F /* ExhibitionShortVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExhibitionShortVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC8C4D228128CD0012288F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BCFC8C4E228128CD0012288F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1297,6 +1299,7 @@
 				BCFC8C7922812D850012288F /* gifSticker.bundle */,
 				BCFC91282281344F0012288F /* PLShortVideoKit.bundle */,
 				BCFC8CBF22812D850012288F /* qn_btn_cut_line@2x.png */,
+				BC6E0C482282D8BD0072A4B1 /* qiniu_logo@2x.png */,
 				BCFC8CA322812D850012288F /* qn_btn_del_a@2x.png */,
 				BCFC8CB922812D850012288F /* qn_btn_del_a@3x.png */,
 				BCFC8C9B22812D850012288F /* qn_btn_del_active_a@2x.png */,
@@ -2710,6 +2713,7 @@
 				BCFC906222812D870012288F /* picasso_e3.bundle in Resources */,
 				BCFC8FDE22812D870012288F /* mu_eyelash_01.png in Resources */,
 				BCFC905622812D870012288F /* mask_luhan.bundle in Resources */,
+				BC6E0C492282D8BD0072A4B1 /* qiniu_logo@2x.png in Resources */,
 				BCFC902A22812D870012288F /* hashiqi_Animoji.bundle in Resources */,
 				BCFC906422812D870012288F /* future_warrior.png in Resources */,
 				BCFC90DC22812D870012288F /* face_ic_archEyebrow@3x.png in Resources */,

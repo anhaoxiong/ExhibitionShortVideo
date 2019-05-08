@@ -10,11 +10,17 @@
 #import "QNPlayerView.h"
 #import "QNPanImageView.h"
 #import "QNGradientView.h"
+#import "QNPictureViewController.h"
+#import <PLShortVideoKit/PLShortVideoKit.h>
+
+static NSString *const kUploadToken = @"QxZugR8TAhI38AiJ_cptTl3RbzLyca3t-AAiH-Hh:3hK7jJJQKwmemseSwQ1duO5AXOw=:eyJzY29wZSI6InNhdmUtc2hvcnQtdmlkZW8tZnJvbS1kZW1vIiwiZGVhZGxpbmUiOjM1NTk2OTU4NzYsInVwaG9zdHMiOlsiaHR0cDovL3VwLXoyLnFpbml1LmNvbSIsImh0dHA6Ly91cGxvYWQtejIucWluaXUuY29tIiwiLUggdXAtejIucWluaXUuY29tIGh0dHA6Ly8xNC4xNTIuMzcuNCJdfQ==";
+static NSString *const kURLPrefix = @"http://panm32w98.bkt.clouddn.com";
 
 @interface QNPlayerViewController ()
 <
 UICollectionViewDelegate,
-UICollectionViewDataSource
+UICollectionViewDataSource,
+PLShortVideoUploaderDelegate
 >
 
 @property (nonatomic, strong) AVPlayer *player;
@@ -23,6 +29,12 @@ UICollectionViewDataSource
 @property (nonatomic, strong) QNPanImageView *panImageView;
 @property (nonatomic, strong) NSMutableArray *thumbArray;
 @property (nonatomic, strong) QNGradientView *gradientBar;
+@property (nonatomic, strong) UIView *scopeBackgroundView;;
+@property (nonatomic, strong) UIView *scopeView;
+@property (nonatomic, strong) UIImage *picture;
+
+@property (strong, nonatomic) PLShortVideoUploader *shortVideoUploader;
+@property (strong, nonatomic) NSString *remoteVideoURL;
 
 @end
 
@@ -40,10 +52,17 @@ UICollectionViewDataSource
         make.bottom.equalTo(self.mas_topLayoutGuide).offset(50);
     }];
     
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.textColor = [UIColor lightTextColor];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.text = @"滑动红框选择封面范围";
+    titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.gradientBar addSubview:titleLabel];
+    
     UILabel *label = [[UILabel alloc] init];
     label.textColor = [UIColor lightTextColor];
     label.textAlignment = NSTextAlignmentCenter;
-    label.text = @"滑动选择封面";
+    label.text = @"滑动滑块选择封面";
     label.font = [UIFont systemFontOfSize:14];
     
     UIButton *backButton = [UIButton buttonWithType:(UIButtonTypeSystem)];
@@ -65,6 +84,12 @@ UICollectionViewDataSource
         make.centerY.equalTo(backButton);
         make.size.equalTo(nextButton.bounds.size);
         make.right.equalTo(self.view).offset(-20);
+    }];
+    
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(backButton.mas_right);
+        make.right.equalTo(nextButton.mas_left);
+        make.centerY.equalTo(nextButton);
     }];
     
     CGFloat width = self.view.bounds.size.width - 60;
@@ -95,7 +120,7 @@ UICollectionViewDataSource
         make.centerY.equalTo(self.collectionView);
         make.centerX.equalTo(self.collectionView.mas_left);
         make.height.equalTo(self.collectionView).offset(10);
-        make.width.equalTo(20);
+        make.width.equalTo(12);
     }];
     
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -115,7 +140,15 @@ UICollectionViewDataSource
     [self getThumbImage];
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    if (nil == self.scopeBackgroundView) {
+        [self setupScopeView];
+    }
+}
+
 - (void)getThumbImage {
+    
     self.thumbArray = [[NSMutableArray alloc] init];
     
     CGFloat duration = CMTimeGetSeconds(self.player.currentItem.duration);
@@ -166,12 +199,66 @@ UICollectionViewDataSource
     }];
 }
 
-- (void)clickBackButton {
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (void)setupScopeView {
+    
+    self.scopeBackgroundView = [[UIView alloc] init];
+    [self.playerView addSubview:self.scopeBackgroundView];
+    self.scopeBackgroundView.frame = [PLShortVideoTranscoder videoDisplay:self.player.currentItem.asset bounds:self.playerView.bounds rotate:PLSPreviewOrientationPortrait];
+    
+    CGSize videoSize = self.player.currentItem.asset.pls_videoSize;
+    self.scopeView = [[UIView alloc] init];
+    self.scopeView.layer.borderWidth = 1.0;
+    self.scopeView.layer.borderColor = [UIColor redColor].CGColor;
+    UIView *coverView1 = [[UIView alloc] init];
+    UIView *coverView2 = [[UIView alloc] init];
+    coverView1.backgroundColor = [UIColor colorWithWhite:.2 alpha:.8];
+    coverView2.backgroundColor = [UIColor colorWithWhite:.2 alpha:.8];
+    
+    [self.scopeBackgroundView addSubview:self.scopeView];
+    [self.scopeBackgroundView addSubview:coverView2];
+    [self.scopeBackgroundView addSubview:coverView1];
+    
+    if (videoSize.height / videoSize.width > PICTURE_RATIO) {
+        
+        CGRect rc = self.scopeBackgroundView.bounds;
+        CGFloat width = rc.size.width;
+        CGFloat height = rc.size.width * PICTURE_RATIO;
+        self.scopeView.frame = CGRectMake(0, (rc.size.height - height) / 2 , width, height);
+
+        [coverView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.equalTo(self.scopeBackgroundView);
+            make.bottom.equalTo(self.scopeView.mas_top);
+        }];
+        
+        [coverView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.equalTo(self.scopeBackgroundView);
+            make.top.equalTo(self.scopeView.mas_bottom);
+        }];
+    } else {
+
+        CGRect rc = self.scopeBackgroundView.bounds;
+        CGFloat height = rc.size.height;
+        CGFloat width = rc.size.height / PICTURE_RATIO;
+        self.scopeView.frame = CGRectMake((rc.size.width - width) / 2, 0 , width, height);
+        
+        [coverView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.bottom.top.equalTo(self.scopeBackgroundView);
+            make.right.equalTo(self.scopeView.mas_left);
+        }];
+        
+        [coverView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.right.bottom.equalTo(self.scopeBackgroundView);
+            make.left.equalTo(self.scopeView.mas_right);
+        }];
+    }
+    
+    UIPanGestureRecognizer *panGesrure = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(scopePanGestureHandle:)];
+    self.scopeView.userInteractionEnabled = YES;
+    [self.scopeView addGestureRecognizer:panGesrure];
 }
 
-- (void)clickNextButton:(UIButton *)button {
-    
+- (void)clickBackButton {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -203,7 +290,6 @@ UICollectionViewDataSource
     
     CGPoint point = [gesture translationInView:gesture.view.superview];
 
-        
     switch (gesture.state) {
             
         case UIGestureRecognizerStateBegan:{
@@ -238,6 +324,129 @@ UICollectionViewDataSource
     CGFloat perecnt = (self.panImageView.center.x - self.collectionView.frame.origin.x) / self.collectionView.frame.size.width;
     CMTime time = CMTimeMake(perecnt * duration.value, duration.timescale);
     [self.player seekToTime:time toleranceBefore:CMTimeMake(150, 1000) toleranceAfter:CMTimeMake(150, 1000)];
+}
+
+- (void)scopePanGestureHandle:(UIPanGestureRecognizer *)gesture {
+    CGPoint point = [gesture translationInView:gesture.view.superview];
+    
+    switch (gesture.state) {
+            
+        case UIGestureRecognizerStateBegan:{
+        }
+            break;
+            
+        case UIGestureRecognizerStateChanged:{
+            CGSize videoSize = self.player.currentItem.asset.pls_videoSize;
+            CGPoint center = self.scopeView.center;
+            if (videoSize.height / videoSize.width > PICTURE_RATIO) {
+                center.y += point.y;
+                center.y = MAX(self.scopeView.frame.size.height/2, center.y);
+                center.y = MIN(self.scopeBackgroundView.bounds.size.height - self.scopeView.frame.size.height/2, center.y);
+            } else {
+                center.x += point.x;
+                center.x = MAX(self.scopeView.frame.size.width/2, center.x);
+                center.x = MIN(self.scopeBackgroundView.bounds.size.width - self.scopeView.frame.size.width/2, center.x);
+            }
+            
+            self.scopeView.center = center;
+        }
+            break;
+            
+        case UIGestureRecognizerStateFailed:
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled:{}
+            break;
+            
+        default:
+            break;
+    }
+    
+    [gesture setTranslation:CGPointMake(0, 0) inView:gesture.view.superview];
+}
+
+- (CGRect)cropRectWithOriginSize:(CGSize)originPictureSize {
+    CGFloat x = self.scopeView.frame.origin.x / self.scopeBackgroundView.bounds.size.width * originPictureSize.width;
+    CGFloat y = self.scopeView.frame.origin.y / self.scopeBackgroundView.bounds.size.height * originPictureSize.height;
+    CGFloat width = self.scopeView.frame.size.width / self.scopeBackgroundView.bounds.size.width * originPictureSize.width;
+    CGFloat height = self.scopeView.frame.size.height / self.scopeBackgroundView.bounds.size.height * originPictureSize.height;
+    
+    return CGRectMake(x, y, width, height);
+}
+
+- (void)clickNextButton:(UIButton *)button {
+
+    // get picture for print
+    AVAssetImageGenerator *imageGenerator = [AVAssetImageGenerator assetImageGeneratorWithAsset:self.player.currentItem.asset];
+    imageGenerator.appliesPreferredTrackTransform = YES;// must set no in this environment
+    CMTime time = self.player.currentItem.currentTime;
+    
+    NSError *error = nil;
+    CGImageRef originImage = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:&error];
+    if (!originImage) {
+        [self showAlertMessage:@"提示" message:@"获取封面发生错误了，重新选择封面试试"];
+        return;
+    }
+    CGSize originPictureSize = CGSizeMake(CGImageGetWidth(originImage), CGImageGetHeight(originImage));
+    CGRect cropRect = [self cropRectWithOriginSize:originPictureSize];
+    CGImageRef cropImage = CGImageCreateWithImageInRect(originImage, cropRect);
+    self.picture = [UIImage imageWithCGImage:cropImage];
+    CGImageRelease(cropImage);
+    CGImageRelease(originImage);
+    
+    UIImageWriteToSavedPhotosAlbum(self.picture, nil, nil, nil);
+    
+    // upload
+    if (!self.remoteVideoURL) {
+        [self doUpload];
+    } else {
+        [self gotoNextController];
+    }
+}
+
+- (void)gotoNextController {
+    QNPictureViewController *pictureController = [[QNPictureViewController alloc] init];
+    pictureController.videoURLString = self.remoteVideoURL;
+    pictureController.originPicture = self.picture;
+    
+    [self presentViewController:pictureController animated:YES completion:nil];
+}
+
+- (void)doUpload {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyyMMddHHmmss";
+    NSString *key = [NSString stringWithFormat:@"short_video_%@.mp4", [formatter stringFromDate:[NSDate date]]];
+    PLSUploaderConfiguration * uploadConfig = [[PLSUploaderConfiguration alloc] initWithToken:kUploadToken videoKey:key https:YES recorder:nil];
+    self.shortVideoUploader = [[PLShortVideoUploader alloc] initWithConfiguration:uploadConfig];
+    self.shortVideoUploader.delegate = self;
+    
+    [self.shortVideoUploader uploadVideoFile:self.url.path];
+    
+    [self showWating];
+}
+
+#pragma mark - PLShortVideoUploaderDelegate 视频上传
+- (void)shortVideoUploader:(PLShortVideoUploader *)uploader completeInfo:(PLSUploaderResponseInfo *)info uploadKey:(NSString *)uploadKey resp:(NSDictionary *)resp {
+    [self hideWating];
+    if(info.error){
+        [self showAlertMessage:@"上传错误" message:info.error.description];
+        return ;
+    }
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@", kURLPrefix, uploadKey];
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = urlString;
+    
+    self.remoteVideoURL = urlString;
+    
+    [self gotoNextController];
+}
+
+- (void)shortVideoUploader:(PLShortVideoUploader *)uploader uploadKey:(NSString *)uploadKey uploadPercent:(float)uploadPercent {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.progress = uploadPercent;
+    });
+    NSLog(@"uploadKey: %@",uploadKey);
+    NSLog(@"uploadPercent: %.2f",uploadPercent);
 }
 
 @end

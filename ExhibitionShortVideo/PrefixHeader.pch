@@ -24,4 +24,6 @@
 #import "UIView+Animation.h"
 #import "UIView+LSCore.h"
 
+#define FINISH_PRINT_NOTIFY @"FINISH_PRINT_NOTIFY"
+
 #endif /* PrefixHeader_pch */

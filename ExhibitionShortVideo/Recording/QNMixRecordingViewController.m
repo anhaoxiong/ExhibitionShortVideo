@@ -189,6 +189,16 @@ UIGestureRecognizerDelegate
     
     [self setupMixRecorder];
     [self setupFilter];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishPrintNotify:) name:FINISH_PRINT_NOTIFY object:nil];
+}
+
+
+- (void)finishPrintNotify:(NSNotification *)info {
+    [self.mixRecorder resetRecording];
+    [self.recordingProgress deleteAllProgress];
+    self.durationLabel.text = @"0s";
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -232,19 +242,14 @@ UIGestureRecognizerDelegate
         [self.filterPickerView autoLayoutBottomHide:YES];
     }
     
-    [UIView animateWithDuration:.3 animations:^{
-        self.recordingButton.alpha = 1;
-        self.deleteLastButton.alpha = 1;
-        self.durationLabel.alpha = 1;
-    } completion:^(BOOL finished) {
-        
-    }];
+    [self.recordingButton alphaShowAnimation];
+    [self.deleteLastButton alphaShowAnimation];
+    [self.durationLabel alphaShowAnimation];
 }
-
 
 - (void)clickBackButton {
     
-    if ([self.mixRecorder getFilesCount] > 0) {
+    if ([self.mixRecorder getFilesCount] > 0 || self.mixRecorder.isRecording) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确定退出?" message:@"退出之后会丢失所有已经录制的视频" preferredStyle:(UIAlertControllerStyleAlert)];
         UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"退出" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
             [self.mixRecorder cancelRecording];
@@ -257,6 +262,7 @@ UIGestureRecognizerDelegate
         [alert addAction:cancelAction];
         [self presentViewController:alert animated:YES completion:nil];
     } else {
+        [self.mixRecorder cancelRecording];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
@@ -437,23 +443,14 @@ UIGestureRecognizerDelegate
 - (void)showFilterNameLabel {
     
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideFilterNameLabel) object:nil];
-    self.filterNameLabel.hidden = NO;
-    self.filterDetailLabel.hidden = NO;
-    [UIView animateWithDuration:.3 animations:^{
-        self.filterDetailLabel.alpha = 1;
-        self.filterNameLabel.alpha = 1;
-    }];
+    [self.filterDetailLabel alphaShowAnimation];
+    [self.filterNameLabel alphaShowAnimation];
     [self performSelector:@selector(hideFilterNameLabel) withObject:nil afterDelay:2];
 }
 
 - (void)hideFilterNameLabel {
-    [UIView animateWithDuration:.3 animations:^{
-        self.filterNameLabel.alpha = 0;
-        self.filterDetailLabel.alpha = 0;
-    } completion:^(BOOL finished) {
-        self.filterNameLabel.hidden = YES;
-        self.filterDetailLabel.hidden = YES;
-    }];
+    [self.filterNameLabel alphaHideAnimation];
+    [self.filterDetailLabel alphaHideAnimation];
 }
 
 - (void)clickFilterButton:(UIButton *)button {
@@ -470,13 +467,9 @@ UIGestureRecognizerDelegate
         [self.view bringSubviewToFront:self.filterPickerView];
         [self.filterPickerView autoLayoutBottomShow:YES];
         
-        [UIView animateWithDuration:.3 animations:^{
-            self.recordingButton.alpha = 0;
-            self.deleteLastButton.alpha = 0;
-            self.durationLabel.alpha = 0;
-        } completion:^(BOOL finished) {
-            
-        }];
+        [self.recordingButton alphaHideAnimation];
+        [self.deleteLastButton alphaHideAnimation];
+        [self.durationLabel alphaHideAnimation];
     }
 }
 
@@ -704,9 +697,10 @@ UIGestureRecognizerDelegate
     plsMovieSettings[PLSVolumeKey] = [NSNumber numberWithFloat:1.0f];
     outputSettings[PLSMovieSettingsKey] = plsMovieSettings;
     
-    QNEditorViewController *videoQNEditorViewController = [[QNEditorViewController alloc] init];
-    videoQNEditorViewController.settings = outputSettings;
-    [self presentViewController:videoQNEditorViewController animated:YES completion:nil];
+    QNEditorViewController *editorViewController = [[QNEditorViewController alloc] init];
+    editorViewController.settings = outputSettings;
+    editorViewController.fileURLs = [self.mixRecorder getAllFilesURL];
+    [self presentViewController:editorViewController animated:YES completion:nil];
 }
 // ==============================================  SDK action end =========================================
 
@@ -721,6 +715,7 @@ UIGestureRecognizerDelegate
         self.activityIndicatorView = nil;
     }
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     NSLog(@"dealloc: %@", [[self class] description]);
 }
 

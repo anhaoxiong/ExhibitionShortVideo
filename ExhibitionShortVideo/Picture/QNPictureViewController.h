@@ -8,9 +8,14 @@
 
 #import "QNBaseViewController.h"
 
+#define PICTURE_RATIO 1.2
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface QNPictureViewController : QNBaseViewController
+
+@property (nonatomic, strong) UIImage *originPicture;
+@property (nonatomic, strong) NSString *videoURLString;
 
 @end
 

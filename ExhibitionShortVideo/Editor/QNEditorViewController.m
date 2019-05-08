@@ -605,10 +605,10 @@ TuSDKFilterProcessorMediaEffectDelegate
     }
     
     [self showView:self.musicView update:YES];
-    [self.musicView setPlayingTime:self.shortVideoEditor.currentTime];
-    
     [self entryEditingMode];
     [self stopEditing];
+    [self.shortVideoEditor seekToTime:kCMTimeZero completionHandler:nil];
+    [self.musicView setPlayingTime:kCMTimeZero];
 }
 
 - (void)clickVolumeButton:(UIButton *)button {
@@ -661,14 +661,15 @@ TuSDKFilterProcessorMediaEffectDelegate
         self.editorStickerView.hidden = NO;
     }
     
-    [self.editorStickerView setPlayingTime:self.shortVideoEditor.currentTime];
+    [self.shortVideoEditor stopEditing];
+    [self.shortVideoEditor seekToTime:kCMTimeZero completionHandler:nil];
+    [self.editorStickerView setPlayingTime:kCMTimeZero];
     
     [self showView:self.editorStickerView update:YES];
-    
-    [self.shortVideoEditor stopEditing];
     [self entryEditingMode];
     [self.playImageView scaleShowAnimation];
     
+    // 启动加在贴纸上的手势
     for (UIView *stickerView in self.stickerOverlayView.subviews) {
         if (![stickerView isKindOfClass:QNStickerView.class]) continue;
         for (UIGestureRecognizer *gesture in stickerView.gestureRecognizers) {
@@ -887,6 +888,7 @@ TuSDKFilterProcessorMediaEffectDelegate
     self.currentStickerView.select = NO;
     self.currentStickerView = nil;
 
+    //  禁用加在贴纸上的手势
     for (UIView *stickerView in self.stickerOverlayView.subviews) {
         if (![stickerView isKindOfClass:QNStickerView.class]) continue;
         for (UIGestureRecognizer *gesture in stickerView.gestureRecognizers) {
@@ -1112,10 +1114,30 @@ TuSDKFilterProcessorMediaEffectDelegate
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (BOOL)needExport {
+    if (1 == self.fileURLs.count && // 只有一个视频文件
+        0 == self.stickerOverlayView.subviews.count && // 无贴纸
+        0 == self.audioSettingsArray.count && // 无音乐
+        0 == [self.filterProcessor mediaEffects].count && // 无滤镜，特效
+        fabs([self.movieSettings[PLSVolumeKey] doubleValue] - 1.0) < FLT_EPSILON // 原视频音量没有调整
+        ) {
+        return NO;
+    }
+    return YES;
+}
+
 #pragma mark - 下一步
 - (void)clickNextButton {
     
     [self stopEditing];
+    
+    if (![self needExport]) {
+        // 根本就没有做任何编辑，并且录制的时候，不是分段录制的，直接进入下一个页面
+        NSURL *url = self.fileURLs.firstObject;
+        UISaveVideoAtPathToSavedPhotosAlbum(url.path, nil, nil, nil);
+        [self gotoNextController:self.fileURLs.firstObject];
+        return;
+    }
     
     // 贴纸信息
     [self.stickerSettingsArray removeAllObjects];
@@ -1162,7 +1184,7 @@ TuSDKFilterProcessorMediaEffectDelegate
     exportSession.shouldOptimizeForNetworkUse = YES;
     exportSession.outputSettings = self.outputSettings;
     exportSession.delegate = self;
-    exportSession.isExportMovieToPhotosAlbum = YES;
+    exportSession.isExportMovieToPhotosAlbum = YES;// 保存到相册
     exportSession.audioChannel = 2;
     exportSession.audioBitrate = [QNBaseViewController suitableAudioBitrateWithSampleRate:asset.pls_sampleRate channel:2];
     exportSession.outputVideoFrameRate = MIN(60, asset.pls_normalFrameRate);
@@ -1187,9 +1209,7 @@ TuSDKFilterProcessorMediaEffectDelegate
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf hideWating];
-            QNPlayerViewController *vc = [[QNPlayerViewController alloc] init];
-            vc.url = url;
-            [weakSelf presentViewController:vc animated:YES completion:nil];
+            [weakSelf gotoNextController:url];
         });
     }];
     
@@ -1215,6 +1235,12 @@ TuSDKFilterProcessorMediaEffectDelegate
     }];
     
     [exportSession exportAsynchronously];
+}
+
+- (void)gotoNextController:(NSURL *)url {
+    QNPlayerViewController *vc = [[QNPlayerViewController alloc] init];
+    vc.url = url;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark - 程序的状态监听
@@ -1297,10 +1323,10 @@ TuSDKFilterProcessorMediaEffectDelegate
 
 - (void)shortVideoEditor:(PLShortVideoEditor *)editor didReachEndForAsset:(AVAsset *)asset timeRange:(CMTimeRange)timeRange {
     NSLog(@"%s, line:%d", __FUNCTION__, __LINE__);
+    
     // =============    TuSDK mark
     self.videoProgress = 1.0;
-    // 结束更新特效 UI
-    [self.tuSDKEffectsView.displayView addSegmentViewEnd];
+    [self endCurrentEffect:self.originAsset.duration];
     // =============    TuSDK end
 }
 
@@ -1467,6 +1493,20 @@ TuSDKFilterProcessorMediaEffectDelegate
     [self.filterProcessor addMediaEffect:nil];
 }
 
+- (void)endCurrentEffect:(CMTime)endTime {
+    
+    if (self.editingEffectData) {
+        // 停止视频预览
+        [self stopEditing];
+        
+        // 结束视频特效处理
+        self.editingEffectData.atTimeRange = [TuSDKTimeRange makeTimeRangeWithStart: self.editingEffectData.atTimeRange.start end:endTime];
+        self.editingEffectData = nil;
+        // 结束更新特效 UI
+        [self.tuSDKEffectsView.displayView addSegmentViewEnd];
+    }
+}
+
 /** 移除最后添加的场景特效 */
 - (void)didTouchUpRemoveSceneMediaEffectButton:(UIButton *)button
 {
@@ -1608,18 +1648,7 @@ TuSDKFilterProcessorMediaEffectDelegate
  */
 - (void)effectsView:(EffectsView *)effectsView didDeSelectMediaEffectCode:(NSString *)effectCode;
 {
-    if (self.editingEffectData)
-    {
-        // 停止视频预览
-        [self stopEditing];
-        
-        // 结束视频特效处理
-        self.editingEffectData.atTimeRange = [TuSDKTimeRange makeTimeRangeWithStart: self.editingEffectData.atTimeRange.start end:[self.shortVideoEditor currentTime]];
-        self.editingEffectData = nil;
-        // 结束更新特效 UI
-        [self.tuSDKEffectsView.displayView addSegmentViewEnd];
-        
-    }
+    [self endCurrentEffect:self.shortVideoEditor.currentTime];
 }
 
 - (void)effectsViewEndEditing:(EffectsView *)effectsView {

@@ -76,6 +76,7 @@ QNFaceUnityViewDelegate
 //============================== UI Action ==============================
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[FUManager shareManager] destoryItems];
 }
 
@@ -281,6 +282,16 @@ QNFaceUnityViewDelegate
 //        make.size.equalTo(self.forbidFaceUnityButton.bounds.size);
 //    }];
 #endif
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishPrintNotify:) name:FINISH_PRINT_NOTIFY object:nil];
+}
+
+- (void)finishPrintNotify:(NSNotification *)info {
+    [self.recorder deleteAllFiles];
+    [self.recordingProgress deleteAllProgress];
+    self.durationLabel.text = @"0s";
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -560,12 +571,10 @@ QNFaceUnityViewDelegate
                 self.leftFilter = self.filterGroup.nextFilter;
                 self.rightFilter = self.filterGroup.currentFilter;
                 self.leftPercent = 0.0;
-                NSLog(@"=== start:left %ld, right %ld", (long)self.filterGroup.nextFilterIndex, (long)self.filterGroup.filterIndex);
             } else {
                 self.leftFilter = self.filterGroup.currentFilter;
                 self.rightFilter = self.filterGroup.nextFilter;
                 self.leftPercent = 1.0;
-                NSLog(@"=== start:left %ld, right %ld", (long)self.filterGroup.filterIndex, (long)self.filterGroup.nextFilterIndex);
             }
             self.isPanning = YES;
             
@@ -788,6 +797,7 @@ QNFaceUnityViewDelegate
 - (void)playEvent:(AVAsset *)asset {
     
     __block AVAsset *movieAsset = asset;
+    __block NSArray *fileURLs = [self.recorder getAllFilesURL];
     if (self.musicURL) {
         __weak typeof(self) weakself = self;
         dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
@@ -809,6 +819,7 @@ QNFaceUnityViewDelegate
                         [self showAlertMessage:nil message:@"取消了背景音乐"];
                     } break;
                     case AVAssetExportSessionStatusCompleted: {
+                        fileURLs = @[outputPath];
                         movieAsset = [AVAsset assetWithURL:outputPath];
                     } break;
                     default: {
@@ -825,7 +836,7 @@ QNFaceUnityViewDelegate
     // =========================== goto editer controller ==========================
     // 设置音视频、水印等编辑信息
     NSMutableDictionary *outputSettings = [[NSMutableDictionary alloc] init];
-    // 待编辑的原始视频素材
+    // 待编辑的原始视频素材s
     NSMutableDictionary *plsMovieSettings = [[NSMutableDictionary alloc] init];
     plsMovieSettings[PLSAssetKey] = movieAsset;
     plsMovieSettings[PLSStartTimeKey] = [NSNumber numberWithFloat:0.f];
@@ -833,9 +844,10 @@ QNFaceUnityViewDelegate
     plsMovieSettings[PLSVolumeKey] = [NSNumber numberWithFloat:1.0f];
     outputSettings[PLSMovieSettingsKey] = plsMovieSettings;
     
-    QNEditorViewController *videoQNEditorViewController = [[QNEditorViewController alloc] init];
-    videoQNEditorViewController.settings = outputSettings;
-    [self presentViewController:videoQNEditorViewController animated:YES completion:nil];
+    QNEditorViewController *editorViewController = [[QNEditorViewController alloc] init];
+    editorViewController.settings = outputSettings;
+    editorViewController.fileURLs = fileURLs;
+    [self presentViewController:editorViewController animated:YES completion:nil];
 }
 
 // ============================================ PLShortVideoRecorderDelegate ============================================
