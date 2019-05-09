@@ -8,6 +8,37 @@
 
 /* Begin PBXBuildFile section */
 		B1D5CEB7A973A8A7A1772CF3 /* libPods-ExhibitionShortVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F68CEA3E1B63CA7F8D63B4 /* libPods-ExhibitionShortVideo.a */; };
+		BC5035E72283EF450021C737 /* qn_record_beauty@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035CA2283EF3E0021C737 /* qn_record_beauty@3x.png */; };
+		BC5035E82283EF450021C737 /* qiniu_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035CB2283EF3E0021C737 /* qiniu_logo@3x.png */; };
+		BC5035E92283EF450021C737 /* qn_volume_mute@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035CC2283EF3E0021C737 /* qn_volume_mute@3x.png */; };
+		BC5035EA2283EF450021C737 /* qn_mv@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035CD2283EF3E0021C737 /* qn_mv@2x.png */; };
+		BC5035EB2283EF450021C737 /* qn_speed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035CE2283EF3F0021C737 /* qn_speed@2x.png */; };
+		BC5035EC2283EF450021C737 /* qn_gif@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035CF2283EF3F0021C737 /* qn_gif@2x.png */; };
+		BC5035ED2283EF450021C737 /* qn_main_background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035D02283EF3F0021C737 /* qn_main_background@3x.png */; };
+		BC5035EE2283EF450021C737 /* qn_speed@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035D12283EF3F0021C737 /* qn_speed@3x.png */; };
+		BC5035EF2283EF450021C737 /* qn_record_beauty_on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035D22283EF3F0021C737 /* qn_record_beauty_on@3x.png */; };
+		BC5035F02283EF450021C737 /* qn_volume@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035D32283EF3F0021C737 /* qn_volume@3x.png */; };
+		BC5035F12283EF450021C737 /* qn_volume_max@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035D42283EF3F0021C737 /* qn_volume_max@2x.png */; };
+		BC5035F22283EF450021C737 /* qn_tutu_filter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035D52283EF3F0021C737 /* qn_tutu_filter@2x.png */; };
+		BC5035F32283EF450021C737 /* qn_main_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035D62283EF3F0021C737 /* qn_main_list@2x.png */; };
+		BC5035F42283EF450021C737 /* qn_main_list@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035D72283EF3F0021C737 /* qn_main_list@3x.png */; };
+		BC5035F52283EF450021C737 /* qn_effect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035D82283EF400021C737 /* qn_effect@2x.png */; };
+		BC5035F62283EF450021C737 /* qn_effect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035D92283EF400021C737 /* qn_effect@3x.png */; };
+		BC5035F72283EF450021C737 /* qn_main_merge@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035DA2283EF400021C737 /* qn_main_merge@3x.png */; };
+		BC5035F82283EF450021C737 /* qn_main_camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035DB2283EF400021C737 /* qn_main_camera@3x.png */; };
+		BC5035F92283EF450021C737 /* qn_tutu_filter@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035DC2283EF400021C737 /* qn_tutu_filter@3x.png */; };
+		BC5035FA2283EF450021C737 /* qn_main_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035DD2283EF400021C737 /* qn_main_background@2x.png */; };
+		BC5035FB2283EF450021C737 /* qn_main_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035DE2283EF400021C737 /* qn_main_camera@2x.png */; };
+		BC5035FC2283EF450021C737 /* qn_volume_mute@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035DF2283EF400021C737 /* qn_volume_mute@2x.png */; };
+		BC5035FD2283EF450021C737 /* qn_mv@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035E02283EF400021C737 /* qn_mv@3x.png */; };
+		BC5035FE2283EF450021C737 /* qn_main_edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035E12283EF410021C737 /* qn_main_edit@2x.png */; };
+		BC5035FF2283EF450021C737 /* qn_gif@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035E22283EF410021C737 /* qn_gif@3x.png */; };
+		BC5036002283EF450021C737 /* qn_main_merge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035E32283EF410021C737 /* qn_main_merge@2x.png */; };
+		BC5036012283EF450021C737 /* qn_main_edit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035E42283EF450021C737 /* qn_main_edit@3x.png */; };
+		BC5036022283EF450021C737 /* qn_volume_max@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035E52283EF450021C737 /* qn_volume_max@3x.png */; };
+		BC5036032283EF450021C737 /* qn_volume@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5035E62283EF450021C737 /* qn_volume@2x.png */; };
+		BC503607228408C20021C737 /* qn_snapshot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC503605228408C10021C737 /* qn_snapshot@3x.png */; };
+		BC503608228408C20021C737 /* qn_snapshot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC503606228408C20021C737 /* qn_snapshot@2x.png */; };
 		BC6E0C492282D8BD0072A4B1 /* qiniu_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6E0C482282D8BD0072A4B1 /* qiniu_logo@2x.png */; };
 		BCFC8C4F228128CD0012288F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFC8C4E228128CD0012288F /* AppDelegate.m */; };
 		BCFC8C57228128D00012288F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8C56228128D00012288F /* Assets.xcassets */; };
@@ -71,7 +102,6 @@
 		BCFC8F3522812D870012288F /* qn_makeup_noitem@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8CA722812D850012288F /* qn_makeup_noitem@3x.png */; };
 		BCFC8F3622812D870012288F /* qn_revocation@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8CA822812D850012288F /* qn_revocation@3x.png */; };
 		BCFC8F3722812D870012288F /* qn_makeup_winter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8CA922812D850012288F /* qn_makeup_winter@2x.png */; };
-		BCFC8F3822812D870012288F /* qn_select_meterial@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8CAA22812D850012288F /* qn_select_meterial@3x.png */; };
 		BCFC8F3922812D870012288F /* qn_makeup_world_weariness@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8CAB22812D850012288F /* qn_makeup_world_weariness@3x.png */; };
 		BCFC8F3A22812D870012288F /* qn_record_beauty_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8CAC22812D850012288F /* qn_record_beauty_on@2x.png */; };
 		BCFC8F3B22812D870012288F /* qn_makeup_tipsy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8CAD22812D850012288F /* qn_makeup_tipsy@3x.png */; };
@@ -79,7 +109,6 @@
 		BCFC8F3D22812D870012288F /* qn_sticker_rotate@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8CAF22812D850012288F /* qn_sticker_rotate@3x.png */; };
 		BCFC8F3E22812D870012288F /* qn_makeup_tipsy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8CB022812D850012288F /* qn_makeup_tipsy@2x.png */; };
 		BCFC8F3F22812D870012288F /* qn_makeup_world_weariness@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8CB122812D850012288F /* qn_makeup_world_weariness@2x.png */; };
-		BCFC8F4022812D870012288F /* qn_select_meterial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8CB222812D850012288F /* qn_select_meterial@2x.png */; };
 		BCFC8F4122812D870012288F /* qn_makeup_winter@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8CB322812D850012288F /* qn_makeup_winter@3x.png */; };
 		BCFC8F4222812D870012288F /* qn_revocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8CB422812D850012288F /* qn_revocation@2x.png */; };
 		BCFC8F4322812D870012288F /* qn_makeup_noitem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFC8CB522812D850012288F /* qn_makeup_noitem@2x.png */; };
@@ -526,7 +555,6 @@
 		BCFC910122812D870012288F /* QNGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFC8EED22812D870012288F /* QNGradientView.m */; };
 		BCFC910222812D870012288F /* QNPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFC8EEE22812D870012288F /* QNPlayerView.m */; };
 		BCFC910322812D870012288F /* QNAssetRangeBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFC8EF722812D870012288F /* QNAssetRangeBar.m */; };
-		BCFC910422812D870012288F /* QNImageTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFC8EF822812D870012288F /* QNImageTitleButton.m */; };
 		BCFC910522812D870012288F /* QNMusicPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFC8EF922812D870012288F /* QNMusicPickerView.m */; };
 		BCFC910622812D870012288F /* QNBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFC8EFA22812D870012288F /* QNBaseViewController.m */; };
 		BCFC910722812D870012288F /* QNPanImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFC8EFB22812D870012288F /* QNPanImageView.m */; };
@@ -579,6 +607,37 @@
 /* Begin PBXFileReference section */
 		33E9A5D8B81C04F8F5BB741B /* Pods-ExhibitionShortVideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExhibitionShortVideo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExhibitionShortVideo/Pods-ExhibitionShortVideo.debug.xcconfig"; sourceTree = "<group>"; };
 		AE12E6BF3AAFFB7F079D0DB7 /* Pods-ExhibitionShortVideo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExhibitionShortVideo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExhibitionShortVideo/Pods-ExhibitionShortVideo.release.xcconfig"; sourceTree = "<group>"; };
+		BC5035CA2283EF3E0021C737 /* qn_record_beauty@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_record_beauty@3x.png"; sourceTree = "<group>"; };
+		BC5035CB2283EF3E0021C737 /* qiniu_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qiniu_logo@3x.png"; sourceTree = "<group>"; };
+		BC5035CC2283EF3E0021C737 /* qn_volume_mute@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_volume_mute@3x.png"; sourceTree = "<group>"; };
+		BC5035CD2283EF3E0021C737 /* qn_mv@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_mv@2x.png"; sourceTree = "<group>"; };
+		BC5035CE2283EF3F0021C737 /* qn_speed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_speed@2x.png"; sourceTree = "<group>"; };
+		BC5035CF2283EF3F0021C737 /* qn_gif@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_gif@2x.png"; sourceTree = "<group>"; };
+		BC5035D02283EF3F0021C737 /* qn_main_background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_main_background@3x.png"; sourceTree = "<group>"; };
+		BC5035D12283EF3F0021C737 /* qn_speed@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_speed@3x.png"; sourceTree = "<group>"; };
+		BC5035D22283EF3F0021C737 /* qn_record_beauty_on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_record_beauty_on@3x.png"; sourceTree = "<group>"; };
+		BC5035D32283EF3F0021C737 /* qn_volume@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_volume@3x.png"; sourceTree = "<group>"; };
+		BC5035D42283EF3F0021C737 /* qn_volume_max@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_volume_max@2x.png"; sourceTree = "<group>"; };
+		BC5035D52283EF3F0021C737 /* qn_tutu_filter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_tutu_filter@2x.png"; sourceTree = "<group>"; };
+		BC5035D62283EF3F0021C737 /* qn_main_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_main_list@2x.png"; sourceTree = "<group>"; };
+		BC5035D72283EF3F0021C737 /* qn_main_list@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_main_list@3x.png"; sourceTree = "<group>"; };
+		BC5035D82283EF400021C737 /* qn_effect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_effect@2x.png"; sourceTree = "<group>"; };
+		BC5035D92283EF400021C737 /* qn_effect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_effect@3x.png"; sourceTree = "<group>"; };
+		BC5035DA2283EF400021C737 /* qn_main_merge@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_main_merge@3x.png"; sourceTree = "<group>"; };
+		BC5035DB2283EF400021C737 /* qn_main_camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_main_camera@3x.png"; sourceTree = "<group>"; };
+		BC5035DC2283EF400021C737 /* qn_tutu_filter@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_tutu_filter@3x.png"; sourceTree = "<group>"; };
+		BC5035DD2283EF400021C737 /* qn_main_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_main_background@2x.png"; sourceTree = "<group>"; };
+		BC5035DE2283EF400021C737 /* qn_main_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_main_camera@2x.png"; sourceTree = "<group>"; };
+		BC5035DF2283EF400021C737 /* qn_volume_mute@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_volume_mute@2x.png"; sourceTree = "<group>"; };
+		BC5035E02283EF400021C737 /* qn_mv@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_mv@3x.png"; sourceTree = "<group>"; };
+		BC5035E12283EF410021C737 /* qn_main_edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_main_edit@2x.png"; sourceTree = "<group>"; };
+		BC5035E22283EF410021C737 /* qn_gif@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_gif@3x.png"; sourceTree = "<group>"; };
+		BC5035E32283EF410021C737 /* qn_main_merge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_main_merge@2x.png"; sourceTree = "<group>"; };
+		BC5035E42283EF450021C737 /* qn_main_edit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_main_edit@3x.png"; sourceTree = "<group>"; };
+		BC5035E52283EF450021C737 /* qn_volume_max@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_volume_max@3x.png"; sourceTree = "<group>"; };
+		BC5035E62283EF450021C737 /* qn_volume@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_volume@2x.png"; sourceTree = "<group>"; };
+		BC503605228408C10021C737 /* qn_snapshot@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_snapshot@3x.png"; sourceTree = "<group>"; };
+		BC503606228408C20021C737 /* qn_snapshot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_snapshot@2x.png"; sourceTree = "<group>"; };
 		BC6E0C482282D8BD0072A4B1 /* qiniu_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qiniu_logo@2x.png"; sourceTree = "<group>"; };
 		BCFC8C4A228128CD0012288F /* ExhibitionShortVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExhibitionShortVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC8C4D228128CD0012288F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -651,7 +710,6 @@
 		BCFC8CA722812D850012288F /* qn_makeup_noitem@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_makeup_noitem@3x.png"; sourceTree = "<group>"; };
 		BCFC8CA822812D850012288F /* qn_revocation@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_revocation@3x.png"; sourceTree = "<group>"; };
 		BCFC8CA922812D850012288F /* qn_makeup_winter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_makeup_winter@2x.png"; sourceTree = "<group>"; };
-		BCFC8CAA22812D850012288F /* qn_select_meterial@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_select_meterial@3x.png"; sourceTree = "<group>"; };
 		BCFC8CAB22812D850012288F /* qn_makeup_world_weariness@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_makeup_world_weariness@3x.png"; sourceTree = "<group>"; };
 		BCFC8CAC22812D850012288F /* qn_record_beauty_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_record_beauty_on@2x.png"; sourceTree = "<group>"; };
 		BCFC8CAD22812D850012288F /* qn_makeup_tipsy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_makeup_tipsy@3x.png"; sourceTree = "<group>"; };
@@ -659,7 +717,6 @@
 		BCFC8CAF22812D850012288F /* qn_sticker_rotate@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_sticker_rotate@3x.png"; sourceTree = "<group>"; };
 		BCFC8CB022812D850012288F /* qn_makeup_tipsy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_makeup_tipsy@2x.png"; sourceTree = "<group>"; };
 		BCFC8CB122812D850012288F /* qn_makeup_world_weariness@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_makeup_world_weariness@2x.png"; sourceTree = "<group>"; };
-		BCFC8CB222812D850012288F /* qn_select_meterial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_select_meterial@2x.png"; sourceTree = "<group>"; };
 		BCFC8CB322812D850012288F /* qn_makeup_winter@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_makeup_winter@3x.png"; sourceTree = "<group>"; };
 		BCFC8CB422812D850012288F /* qn_revocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_revocation@2x.png"; sourceTree = "<group>"; };
 		BCFC8CB522812D850012288F /* qn_makeup_noitem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qn_makeup_noitem@2x.png"; sourceTree = "<group>"; };
@@ -1173,7 +1230,6 @@
 		BCFC8EED22812D870012288F /* QNGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNGradientView.m; sourceTree = "<group>"; };
 		BCFC8EEE22812D870012288F /* QNPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNPlayerView.m; sourceTree = "<group>"; };
 		BCFC8EEF22812D870012288F /* QNMusicPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNMusicPickerView.h; sourceTree = "<group>"; };
-		BCFC8EF022812D870012288F /* QNImageTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNImageTitleButton.h; sourceTree = "<group>"; };
 		BCFC8EF122812D870012288F /* QNAssetRangeBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNAssetRangeBar.h; sourceTree = "<group>"; };
 		BCFC8EF222812D870012288F /* QNMusicDecibelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNMusicDecibelView.h; sourceTree = "<group>"; };
 		BCFC8EF322812D870012288F /* QNPanImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNPanImageView.h; sourceTree = "<group>"; };
@@ -1181,7 +1237,6 @@
 		BCFC8EF522812D870012288F /* QNPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNPlayerView.h; sourceTree = "<group>"; };
 		BCFC8EF622812D870012288F /* QNGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNGradientView.h; sourceTree = "<group>"; };
 		BCFC8EF722812D870012288F /* QNAssetRangeBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNAssetRangeBar.m; sourceTree = "<group>"; };
-		BCFC8EF822812D870012288F /* QNImageTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNImageTitleButton.m; sourceTree = "<group>"; };
 		BCFC8EF922812D870012288F /* QNMusicPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNMusicPickerView.m; sourceTree = "<group>"; };
 		BCFC8EFA22812D870012288F /* QNBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNBaseViewController.m; sourceTree = "<group>"; };
 		BCFC8EFB22812D870012288F /* QNPanImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNPanImageView.m; sourceTree = "<group>"; };
@@ -1298,8 +1353,11 @@
 				BCFC8CC722812D850012288F /* audio.bundle */,
 				BCFC8C7922812D850012288F /* gifSticker.bundle */,
 				BCFC91282281344F0012288F /* PLShortVideoKit.bundle */,
-				BCFC8CBF22812D850012288F /* qn_btn_cut_line@2x.png */,
 				BC6E0C482282D8BD0072A4B1 /* qiniu_logo@2x.png */,
+				BC5035CB2283EF3E0021C737 /* qiniu_logo@3x.png */,
+				BC503606228408C20021C737 /* qn_snapshot@2x.png */,
+				BC503605228408C10021C737 /* qn_snapshot@3x.png */,
+				BCFC8CBF22812D850012288F /* qn_btn_cut_line@2x.png */,
 				BCFC8CA322812D850012288F /* qn_btn_del_a@2x.png */,
 				BCFC8CB922812D850012288F /* qn_btn_del_a@3x.png */,
 				BCFC8C9B22812D850012288F /* qn_btn_del_active_a@2x.png */,
@@ -1310,14 +1368,28 @@
 				BCFC8C8422812D850012288F /* qn_edit_add@3x.png */,
 				BCFC8CA622812D850012288F /* qn_edit_delete@2x.png */,
 				BCFC8CB722812D850012288F /* qn_edit_delete@3x.png */,
+				BC5035D82283EF400021C737 /* qn_effect@2x.png */,
+				BC5035D92283EF400021C737 /* qn_effect@3x.png */,
 				BCFC8C9822812D850012288F /* qn_filter@2x.png */,
 				BCFC8C8A22812D850012288F /* qn_filter@3x.png */,
 				BCFC8C7822812D850012288F /* qn_flash_off@2x.png */,
 				BCFC8C8222812D850012288F /* qn_flash_off@3x.png */,
 				BCFC8C9D22812D850012288F /* qn_flash_on@2x.png */,
 				BCFC8C8522812D850012288F /* qn_flash_on@3x.png */,
+				BC5035CF2283EF3F0021C737 /* qn_gif@2x.png */,
+				BC5035E22283EF410021C737 /* qn_gif@3x.png */,
 				BCFC8C9022812D850012288F /* qn_icon_close@2x.png */,
 				BCFC8C9122812D850012288F /* qn_icon_close@3x.png */,
+				BC5035DD2283EF400021C737 /* qn_main_background@2x.png */,
+				BC5035D02283EF3F0021C737 /* qn_main_background@3x.png */,
+				BC5035DE2283EF400021C737 /* qn_main_camera@2x.png */,
+				BC5035DB2283EF400021C737 /* qn_main_camera@3x.png */,
+				BC5035E12283EF410021C737 /* qn_main_edit@2x.png */,
+				BC5035E42283EF450021C737 /* qn_main_edit@3x.png */,
+				BC5035D62283EF3F0021C737 /* qn_main_list@2x.png */,
+				BC5035D72283EF3F0021C737 /* qn_main_list@3x.png */,
+				BC5035E32283EF410021C737 /* qn_main_merge@2x.png */,
+				BC5035DA2283EF400021C737 /* qn_main_merge@3x.png */,
 				BCFC8C8322812D850012288F /* qn_makeup_black@2x.png */,
 				BCFC8C7722812D850012288F /* qn_makeup_black@3x.png */,
 				BCFC8CA422812D850012288F /* qn_makeup_boyfriend@2x.png */,
@@ -1354,6 +1426,8 @@
 				BCFC8CAB22812D850012288F /* qn_makeup_world_weariness@3x.png */,
 				BCFC8CA022812D850012288F /* qn_music@2x.png */,
 				BCFC8CBC22812D850012288F /* qn_music@3x.png */,
+				BC5035CD2283EF3E0021C737 /* qn_mv@2x.png */,
+				BC5035E02283EF400021C737 /* qn_mv@3x.png */,
 				BCFC8C9322812D850012288F /* qn_next_button@2x.png */,
 				BCFC8C8E22812D850012288F /* qn_next_button@3x.png */,
 				BCFC8CCC22812D850012288F /* qn_none_filter@2x.png */,
@@ -1365,7 +1439,9 @@
 				BCFC8C8F22812D850012288F /* qn_play@3x.png */,
 				BCFC8CC922812D850012288F /* qn_progressbar_front.png */,
 				BCFC8CAC22812D850012288F /* qn_record_beauty_on@2x.png */,
+				BC5035D22283EF3F0021C737 /* qn_record_beauty_on@3x.png */,
 				BCFC8C9422812D850012288F /* qn_record_beauty@2x.png */,
+				BC5035CA2283EF3E0021C737 /* qn_record_beauty@3x.png */,
 				BCFC8C9722812D850012288F /* qn_recording@2x.png */,
 				BCFC8C8B22812D850012288F /* qn_recording@3x.png */,
 				BCFC8C7F22812D850012288F /* qn_reset_icon@2x.png */,
@@ -1373,8 +1449,8 @@
 				BCFC8CB422812D850012288F /* qn_revocation@2x.png */,
 				BCFC8CA822812D850012288F /* qn_revocation@3x.png */,
 				BCFC8CC422812D850012288F /* qn_rotate_video@2x.png */,
-				BCFC8CB222812D850012288F /* qn_select_meterial@2x.png */,
-				BCFC8CAA22812D850012288F /* qn_select_meterial@3x.png */,
+				BC5035CE2283EF3F0021C737 /* qn_speed@2x.png */,
+				BC5035D12283EF3F0021C737 /* qn_speed@3x.png */,
 				BCFC8C7E22812D850012288F /* qn_sticker_delete@2x.png */,
 				BCFC8C7D22812D850012288F /* qn_sticker_delete@3x.png */,
 				BCFC8CAE22812D850012288F /* qn_sticker_rotate@2x.png */,
@@ -1383,8 +1459,16 @@
 				BCFC8C8022812D850012288F /* qn_sticker@3x.png */,
 				BCFC8C8D22812D850012288F /* qn_switch_camera@2x.png */,
 				BCFC8C9522812D850012288F /* qn_switch_camera@3x.png */,
+				BC5035D52283EF3F0021C737 /* qn_tutu_filter@2x.png */,
+				BC5035DC2283EF400021C737 /* qn_tutu_filter@3x.png */,
 				BCFC8C7A22812D850012288F /* qn_video_pan@2x.png */,
 				BCFC8C8122812D850012288F /* qn_video_pan@3x.png */,
+				BC5035D42283EF3F0021C737 /* qn_volume_max@2x.png */,
+				BC5035E52283EF450021C737 /* qn_volume_max@3x.png */,
+				BC5035DF2283EF400021C737 /* qn_volume_mute@2x.png */,
+				BC5035CC2283EF3E0021C737 /* qn_volume_mute@3x.png */,
+				BC5035E62283EF450021C737 /* qn_volume@2x.png */,
+				BC5035D32283EF3F0021C737 /* qn_volume@3x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -2262,8 +2346,6 @@
 				BCFC8EFA22812D870012288F /* QNBaseViewController.m */,
 				BCFC8EF622812D870012288F /* QNGradientView.h */,
 				BCFC8EED22812D870012288F /* QNGradientView.m */,
-				BCFC8EF022812D870012288F /* QNImageTitleButton.h */,
-				BCFC8EF822812D870012288F /* QNImageTitleButton.m */,
 				BCFC8EF222812D870012288F /* QNMusicDecibelView.h */,
 				BCFC8EFC22812D870012288F /* QNMusicDecibelView.m */,
 				BCFC8EEF22812D870012288F /* QNMusicPickerView.h */,
@@ -2406,6 +2488,7 @@
 				BCFC8F2922812D870012288F /* qn_btn_del_active_a@2x.png in Resources */,
 				BCFC8F5722812D870012288F /* qn_progressbar_front.png in Resources */,
 				BCFC8FAF22812D870012288F /* mu_eyeshadow_03.png in Resources */,
+				BC5035F72283EF450021C737 /* qn_main_merge@3x.png in Resources */,
 				BCFC8FD922812D870012288F /* mu_eyelash_08.png in Resources */,
 				BCFC908922812D870012288F /* gufeng_zh_fu_mp.bundle in Resources */,
 				BCFC901C22812D870012288F /* juanhuzi_lm_fu.bundle in Resources */,
@@ -2425,10 +2508,12 @@
 				BCFC8F1722812D870012288F /* qn_makeup_plum@2x.png in Resources */,
 				BCFC8F3C22812D870012288F /* qn_sticker_rotate@2x.png in Resources */,
 				BCFC8FED22812D870012288F /* mu_blush_17.png in Resources */,
+				BC5035ED2283EF450021C737 /* qn_main_background@3x.png in Resources */,
 				BCFC901422812D870012288F /* hudie_lm_fu.bundle in Resources */,
 				BCFC8FC722812D870012288F /* mu_eyebrow_19.png in Resources */,
 				BCFC903522812D870012288F /* ctrl_flower.bundle in Resources */,
 				BCFC8F1222812D870012288F /* qn_edit_add@3x.png in Resources */,
+				BC5035E72283EF450021C737 /* qn_record_beauty@3x.png in Resources */,
 				BCFC8F7E22812D870012288F /* dataSource.plist in Resources */,
 				BCFC8FC522812D870012288F /* mu_eyeliner_08.png in Resources */,
 				BCFC904222812D870012288F /* tiger_huang.bundle in Resources */,
@@ -2439,6 +2524,7 @@
 				BCFC904122812D870012288F /* tiger.bundle in Resources */,
 				BCFC8F2322812D870012288F /* qn_switch_camera@3x.png in Resources */,
 				BCFC908822812D870012288F /* xiandai_ztt_fu_mp.bundle in Resources */,
+				BC5036002283EF450021C737 /* qn_main_merge@2x.png in Resources */,
 				BCFC90D522812D870012288F /* lsq_filter_thumb_LiveFancy01_1.jpg in Resources */,
 				BCFC905E22812D870012288F /* picasso_e2.bundle in Resources */,
 				BCFC8F9222812D870012288F /* icon_gradualchangehair_06@2x.png in Resources */,
@@ -2468,6 +2554,7 @@
 				BCFC8F3122812D870012288F /* qn_btn_del_a@2x.png in Resources */,
 				BCFC909E22812D870012288F /* lsq_filter_thumb_CHComics_Video.jpg in Resources */,
 				BCFC8FC222812D870012288F /* mu_eyeliner_04.png in Resources */,
+				BC5035EB2283EF450021C737 /* qn_speed@2x.png in Resources */,
 				BCFC905222812D870012288F /* mask_huangxiaoming.png in Resources */,
 				BCFC907F22812D870012288F /* facewarp6.bundle in Resources */,
 				BCFC909D22812D870012288F /* edit_ic_return@2x.png in Resources */,
@@ -2496,6 +2583,7 @@
 				BCFC908E22812D870012288F /* ice_lm_fu_mp.png in Resources */,
 				BCFC909722812D870012288F /* TuSDK.bundle in Resources */,
 				BCFC900A22812D870012288F /* mu_lip_18.json in Resources */,
+				BC5035F12283EF450021C737 /* qn_volume_max@2x.png in Resources */,
 				BCFC900C22812D870012288F /* mu_lip_02.json in Resources */,
 				BCFC904322812D870012288F /* xiongmao.bundle in Resources */,
 				BCFC8F4522812D870012288F /* qn_edit_delete@3x.png in Resources */,
@@ -2511,6 +2599,7 @@
 				BCFC904A22812D870012288F /* baozi.bundle in Resources */,
 				BCFC90CA22812D870012288F /* lsq_filter_thumb_clear01.jpg in Resources */,
 				BCFC908722812D870012288F /* hez_ztt_fu_mp.bundle in Resources */,
+				BC5035F32283EF450021C737 /* qn_main_list@2x.png in Resources */,
 				BCFC8F8A22812D870012288F /* icon_gradualchangehair_05@3x.png in Resources */,
 				BCFC8FA322812D870012288F /* mu_eyepupil_03.png in Resources */,
 				BCFC8FFE22812D870012288F /* mu_lip_21.json in Resources */,
@@ -2523,6 +2612,7 @@
 				BCFC8F7F22812D870012288F /* icon_gradualchangehair_01@2x.png in Resources */,
 				BCFC8FE822812D870012288F /* mu_blush_10.png in Resources */,
 				BCFC900F22812D870012288F /* mu_lip_19.json in Resources */,
+				BC5035F62283EF450021C737 /* qn_effect@3x.png in Resources */,
 				BCFC902E22812D870012288F /* frog_Animoji.bundle in Resources */,
 				BCFC8F1622812D870012288F /* qn_done@2x.png in Resources */,
 				BCFC8F2122812D870012288F /* qn_next_button@2x.png in Resources */,
@@ -2533,6 +2623,7 @@
 				BCFC8FF122812D870012288F /* mu_blush_24.png in Resources */,
 				BCFC90B422812D870012288F /* lsq_filter_thumb_timber_1.jpg in Resources */,
 				BCFC907222812D870012288F /* change_face.bundle in Resources */,
+				BC503608228408C20021C737 /* qn_snapshot@2x.png in Resources */,
 				BCFC90A922812D870012288F /* edit_ic_return@3x.png in Resources */,
 				BCFC90C422812D870012288F /* lsq_filter_thumb_LiveHeartbeat01.png in Resources */,
 				BCFC90CF22812D870012288F /* face_ic_eyeAngle@2x.png in Resources */,
@@ -2541,10 +2632,12 @@
 				BCFC900622812D870012288F /* mu_lip_09.json in Resources */,
 				BCFC905F22812D870012288F /* picasso_e2.png in Resources */,
 				BCFC903922812D870012288F /* ctrl_rain.png in Resources */,
+				BC5035FD2283EF450021C737 /* qn_mv@3x.png in Resources */,
 				BCFC8FE622812D870012288F /* mu_blush_05.png in Resources */,
 				BCFC90DE22812D870012288F /* face_ic_archEyebrow@2x.png in Resources */,
 				BCFC904B22812D870012288F /* tiger_huang.png in Resources */,
 				BCFC8F0E22812D870012288F /* qn_sticker@3x.png in Resources */,
+				BC5035EA2283EF450021C737 /* qn_mv@2x.png in Resources */,
 				BCFC907422812D870012288F /* hair_color.bundle in Resources */,
 				BCFC908B22812D870012288F /* sea_lm_fu_mp.bundle in Resources */,
 				BCFC8F8422812D870012288F /* hair_color_1@3x.png in Resources */,
@@ -2563,6 +2656,7 @@
 				BCFC8F0C22812D870012288F /* qn_sticker_delete@2x.png in Resources */,
 				BCFC909F22812D870012288F /* ic_parameter@2x.png in Resources */,
 				BCFC905D22812D870012288F /* mask_tongliya.png in Resources */,
+				BC5035F52283EF450021C737 /* qn_effect@2x.png in Resources */,
 				BCFC8FC422812D870012288F /* mu_eyeliner_07.png in Resources */,
 				BCFC903822812D870012288F /* ctrl_flower.png in Resources */,
 				BCFC8F2A22812D870012288F /* qn_makeup_cream@3x.png in Resources */,
@@ -2573,9 +2667,11 @@
 				BCFC8FE522812D870012288F /* mu_blush_11.png in Resources */,
 				BCFC8F4D22812D870012288F /* qn_btn_cut_line@2x.png in Resources */,
 				BCFC90C722812D870012288F /* lsq_filter_thumb_s1950_1.jpg in Resources */,
+				BC5035FE2283EF450021C737 /* qn_main_edit@2x.png in Resources */,
 				BCFC8FD322812D870012288F /* mu_eyebrow_01.png in Resources */,
 				BCFC8F5A22812D870012288F /* qn_none_filter@2x.png in Resources */,
 				BCFC8F9122812D870012288F /* hair_color_2@2x.png in Resources */,
+				BC503607228408C20021C737 /* qn_snapshot@3x.png in Resources */,
 				BCFC906522812D870012288F /* luhantongkuan_ztt_fu.png in Resources */,
 				BCFC903422812D870012288F /* ssd_thread_korheart.png in Resources */,
 				BCFC8F3F22812D870012288F /* qn_makeup_world_weariness@2x.png in Resources */,
@@ -2595,7 +2691,9 @@
 				BCFC8F3222812D870012288F /* qn_makeup_boyfriend@2x.png in Resources */,
 				BCFC900B22812D870012288F /* mu_lip_14.json in Resources */,
 				BCFC907022812D870012288F /* sdx2.bundle in Resources */,
+				BC5035E92283EF450021C737 /* qn_volume_mute@3x.png in Resources */,
 				BCFC8FE922812D870012288F /* mu_blush_14.png in Resources */,
+				BC5035FB2283EF450021C737 /* qn_main_camera@2x.png in Resources */,
 				BCFC8F2622812D870012288F /* qn_filter@2x.png in Resources */,
 				BCFC902022812D870012288F /* bling.bundle in Resources */,
 				BCFC908D22812D870012288F /* xiandai_ztt_fu_mp.png in Resources */,
@@ -2606,6 +2704,7 @@
 				BCFC90A022812D870012288F /* lsq_filter_thumb_LiveSignal01.jpg in Resources */,
 				BCFC8F2D22812D870012288F /* qn_makeup_freckles@2x.png in Resources */,
 				BCFC8F3D22812D870012288F /* qn_sticker_rotate@3x.png in Resources */,
+				BC5035EF2283EF450021C737 /* qn_record_beauty_on@3x.png in Resources */,
 				BCFC8FC122812D870012288F /* mu_eyeliner_05.png in Resources */,
 				BCFC903322812D870012288F /* ssd_thread_thumb.bundle in Resources */,
 				BCFC8FB522812D870012288F /* mu_eyeshadow_15.png in Resources */,
@@ -2619,6 +2718,7 @@
 				BCFC8FEE22812D870012288F /* mu_blush_16.png in Resources */,
 				BCFC90CD22812D870012288F /* lsq_filter_thumb_Elegant_1.jpg in Resources */,
 				BCFC8F8C22812D870012288F /* hair_color_5@2x.png in Resources */,
+				BC5036012283EF450021C737 /* qn_main_edit@3x.png in Resources */,
 				BCFC8FD722812D870012288F /* mu_eyebrow_16.png in Resources */,
 				BCFC8FF822812D870012288F /* mu_blush_23.png in Resources */,
 				BCFC8FA122812D870012288F /* mu_eyepupil_01.png in Resources */,
@@ -2641,7 +2741,6 @@
 				BCFC903C22812D870012288F /* ssd_thread_cute.png in Resources */,
 				BCFC906822812D870012288F /* xiaobianzi_zh_fu.bundle in Resources */,
 				BCFC8FEF22812D870012288F /* mu_blush_02.png in Resources */,
-				BCFC8F3822812D870012288F /* qn_select_meterial@3x.png in Resources */,
 				BCFC8F8F22812D870012288F /* icon_gradualchangehair_02@3x.png in Resources */,
 				BCFC8F0822812D870012288F /* qn_video_pan@2x.png in Resources */,
 				BCFC90A322812D870012288F /* lsq_filter_thumb_Lightcolor_Video.jpg in Resources */,
@@ -2667,6 +2766,7 @@
 				BCFC8F3322812D870012288F /* qn_pause@3x.png in Resources */,
 				BCFC8FBB22812D870012288F /* mu_eyeshadow_12.png in Resources */,
 				BCFC90C322812D870012288F /* lsq_filter_thumb_LiveHeartbeat01.jpg in Resources */,
+				BC5035F92283EF450021C737 /* qn_tutu_filter@3x.png in Resources */,
 				BCFC90D722812D870012288F /* lsq_filter_thumb_Green_1.jpg in Resources */,
 				BCFC8F8E22812D870012288F /* hair_color_2@3x.png in Resources */,
 				BCFC90DA22812D870012288F /* lsq_filter_thumb_EdgeMagic01.jpg in Resources */,
@@ -2674,6 +2774,8 @@
 				BCFC90BF22812D870012288F /* video_ic_nix@2x.png in Resources */,
 				BCFC8FDD22812D870012288F /* mu_eyelash_05.png in Resources */,
 				BCFC907722812D870012288F /* facewarp5.bundle in Resources */,
+				BC5035FF2283EF450021C737 /* qn_gif@3x.png in Resources */,
+				BC5035F82283EF450021C737 /* qn_main_camera@3x.png in Resources */,
 				BCFC907322812D870012288F /* hair_gradient.bundle in Resources */,
 				BCFC908322812D870012288F /* douyin_01.bundle in Resources */,
 				BCFC900D22812D870012288F /* mu_lip_03.json in Resources */,
@@ -2718,8 +2820,10 @@
 				BCFC906422812D870012288F /* future_warrior.png in Resources */,
 				BCFC90DC22812D870012288F /* face_ic_archEyebrow@3x.png in Resources */,
 				BCFC906E22812D870012288F /* xiaoxueshen_ztt_fu.png in Resources */,
+				BC5035F02283EF450021C737 /* qn_volume@3x.png in Resources */,
 				BCFC90D222812D870012288F /* ic_nix@2x.png in Resources */,
 				BCFC8FF022812D870012288F /* mu_blush_18.png in Resources */,
+				BC5036022283EF450021C737 /* qn_volume_max@3x.png in Resources */,
 				BCFC905722812D870012288F /* mask_matianyu.bundle in Resources */,
 				BCFC90B322812D870012288F /* lsq_filter_thumb_Winter_1.jpg in Resources */,
 				BCFC8F8B22812D870012288F /* icon_gradualchangehair_05@2x.png in Resources */,
@@ -2739,7 +2843,6 @@
 				BCFC908422812D870012288F /* douyin_02.png in Resources */,
 				BCFC8FD522812D870012288F /* mu_eyebrow_03.png in Resources */,
 				BCFC8FB122812D870012288F /* mu_eyeshadow_16.png in Resources */,
-				BCFC8F4022812D870012288F /* qn_select_meterial@2x.png in Resources */,
 				BCFC8F1322812D870012288F /* qn_flash_on@3x.png in Resources */,
 				BCFC8FFB22812D870012288F /* makeup_noitem.json in Resources */,
 				BCFC8FD122812D870012288F /* mu_eyebrow_10.png in Resources */,
@@ -2748,11 +2851,13 @@
 				BCFC907E22812D870012288F /* facewarp4.bundle in Resources */,
 				BCFC902922812D870012288F /* baimao_Animoji.png in Resources */,
 				BCFC905B22812D870012288F /* mask_linzhiling.png in Resources */,
+				BC5035FA2283EF450021C737 /* qn_main_background@2x.png in Resources */,
 				BCFC8F0522812D870012288F /* qn_makeup_black@3x.png in Resources */,
 				BCFC8F5622812D870012288F /* qn_makeup_classical@2x.png in Resources */,
 				BCFC8FB222812D870012288F /* mu_eyeshadow_02.png in Resources */,
 				BCFC8FE222812D870012288F /* mu_blush_12.png in Resources */,
 				BCFC8F8822812D870012288F /* hair_color_7@2x.png in Resources */,
+				BC5035F22283EF450021C737 /* qn_tutu_filter@2x.png in Resources */,
 				BCFC900E22812D870012288F /* mu_lip_15.json in Resources */,
 				BCFC8F4222812D870012288F /* qn_revocation@2x.png in Resources */,
 				BCFC90A822812D870012288F /* lsq_filter_thumb_Normal.jpg in Resources */,
@@ -2776,8 +2881,10 @@
 				BCFC907622812D870012288F /* facewarp3.bundle in Resources */,
 				BCFC903122812D870012288F /* ssd_thread_cute.bundle in Resources */,
 				BCFC8FCA22812D870012288F /* mu_eyebrow_06.png in Resources */,
+				BC5035F42283EF450021C737 /* qn_main_list@3x.png in Resources */,
 				BCFC8FDA22812D870012288F /* mu_eyelash_07.png in Resources */,
 				BCFC90E022812D870012288F /* style_default_btn_sticker_online@3x.png in Resources */,
+				BC5035FC2283EF450021C737 /* qn_volume_mute@2x.png in Resources */,
 				BCFC90B522812D870012288F /* lsq_filter_thumb_Qiushi_1.jpg in Resources */,
 				BCFC8FE022812D870012288F /* mu_eyelash_03.png in Resources */,
 				BCFC906122812D870012288F /* picasso_e1.png in Resources */,
@@ -2791,6 +2898,7 @@
 				BCFC901122812D870012288F /* touhua_ztt_fu.bundle in Resources */,
 				BCFC8F9622812D870012288F /* hair_color_6@2x.png in Resources */,
 				BCFC906322812D870012288F /* picasso_e1.bundle in Resources */,
+				BC5035EC2283EF450021C737 /* qn_gif@2x.png in Resources */,
 				BCFC90CB22812D870012288F /* face_ic_eyeSize@3x.png in Resources */,
 				BCFC8F4F22812D870012288F /* qn_picker@2x.png in Resources */,
 				BCFC90DD22812D870012288F /* lsq_filter_thumb_LiveSlosh01.jpg in Resources */,
@@ -2817,6 +2925,7 @@
 				BCFC8F4E22812D870012288F /* qn_makeup_punk@2x.png in Resources */,
 				BCFC907822812D870012288F /* facewarp6.png in Resources */,
 				BCFC903222812D870012288F /* ctrl_snow.bundle in Resources */,
+				BC5035EE2283EF450021C737 /* qn_speed@3x.png in Resources */,
 				BCFC8FA522812D870012288F /* mu_eyepupil_09.png in Resources */,
 				BCFC8F6822812D870012288F /* LICENSE in Resources */,
 				BCFC90AF22812D870012288F /* video_style_default_btn_sticker_online@3x.png in Resources */,
@@ -2825,6 +2934,7 @@
 				BCFC90D822812D870012288F /* sliderThumb@3x.png in Resources */,
 				BCFC90B622812D870012288F /* lsq_filter_thumb_Monochrome_Video.jpg in Resources */,
 				BCFC8F2F22812D870012288F /* qn_makeup_maple_leaves@3x.png in Resources */,
+				BC5035E82283EF450021C737 /* qiniu_logo@3x.png in Resources */,
 				BCFC908222812D870012288F /* douyin_01.png in Resources */,
 				BCFC90AB22812D870012288F /* face_ic_jawSize@3x.png in Resources */,
 				BCFC8FDF22812D870012288F /* mu_eyelash_02.png in Resources */,
@@ -2846,6 +2956,7 @@
 				BCFC8F0A22812D870012288F /* qn_sticker@2x.png in Resources */,
 				BCFC8F3722812D870012288F /* qn_makeup_winter@2x.png in Resources */,
 				BCFC8FDB22812D870012288F /* mu_eyelash_06.png in Resources */,
+				BC5036032283EF450021C737 /* qn_volume@2x.png in Resources */,
 				BCFC8FB622812D870012288F /* mu_eyeshadow_11.png in Resources */,
 				BCFC908A22812D870012288F /* ice_lm_fu_mp.bundle in Resources */,
 				BCFC902222812D870012288F /* douniuquan_Animoji.png in Resources */,
@@ -2920,7 +3031,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCFC909122812D870012288F /* FUImageHelper.m in Sources */,
-				BCFC910422812D870012288F /* QNImageTitleButton.m in Sources */,
 				BCFC8F6022812D870012288F /* QNMusicModel.m in Sources */,
 				BCFC90FA22812D870012288F /* EffectsItemView.m in Sources */,
 				BCFC90F122812D870012288F /* ParametersAdjustView.m in Sources */,

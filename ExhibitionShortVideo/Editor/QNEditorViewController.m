@@ -47,6 +47,7 @@ TuSDKFilterProcessorDelegate,
 TuSDKFilterProcessorMediaEffectDelegate
 >
 
+@property (strong, nonatomic) NSURL *exportURL;
 @property (strong, nonatomic) AVAsset *originAsset;
 
 @property (nonatomic, strong) UIProgressView *playingProgressView;
@@ -466,8 +467,9 @@ TuSDKFilterProcessorMediaEffectDelegate
     };
     
     NSString *imageNames[] = {
-        @"qn_music", @"qn_music", @"qn_music", @"qn_music", @"qn_music", @"qn_music", @"qn_music"
+        @"qn_effect", @"qn_filter", @"qn_music", @"qn_volume", @"qn_gif"
     };
+
     
     SEL selectors[] = {
         @selector(clickTuSDKEffectsButton:),
@@ -1139,6 +1141,12 @@ TuSDKFilterProcessorMediaEffectDelegate
         return;
     }
     
+    if (self.exportURL) {
+        // 删除上一次导出的视频
+        [[NSFileManager defaultManager] removeItemAtURL:self.exportURL error:nil];
+        self.exportURL = nil;
+    }
+    
     // 贴纸信息
     [self.stickerSettingsArray removeAllObjects];
     
@@ -1208,6 +1216,7 @@ TuSDKFilterProcessorMediaEffectDelegate
         // TuSDK end
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            weakSelf.exportURL = url;
             [weakSelf hideWating];
             [weakSelf gotoNextController:url];
         });
@@ -1347,6 +1356,10 @@ TuSDKFilterProcessorMediaEffectDelegate
 - (void)dealloc {
     self.shortVideoEditor.delegate = nil;
     self.shortVideoEditor = nil;
+    if (self.exportURL) {
+        [[NSFileManager defaultManager] removeItemAtURL:self.exportURL error:nil];
+        self.exportURL = nil;
+    }
     NSLog(@"dealloc: %@", [[self class] description]);
 }
 

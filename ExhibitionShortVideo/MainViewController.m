@@ -7,7 +7,6 @@
 //
 
 #import "MainViewController.h"
-#import "QNImageTitleButton.h"
 #import "QNRecordingViewController.h"
 #import "QBImagePickerController.h"
 #import "QNMixRecordingViewController.h"
@@ -24,27 +23,61 @@ QBImagePickerControllerDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    int width = 100;
-    int height = 150;
-    QNImageTitleButton *recordingButton = [[QNImageTitleButton alloc] initWithFrame:CGRectMake(0, 0, width, height) image:[UIImage imageNamed:@"qn_select_meterial"] title:@"视频拍摄"];
+    UIImage *bgImg = [UIImage imageNamed:@"qn_main_background"];
+    int width = bgImg.size.width;
+    int height = width;
+    UIButton *recordingButton = [[UIButton alloc] init];
+    recordingButton.clipsToBounds = YES;
+    recordingButton.layer.cornerRadius = width / 2;
+    [recordingButton setImage:[UIImage imageNamed:@"qn_main_camera"] forState:(UIControlStateNormal)];
+    [recordingButton setBackgroundImage:bgImg forState:(UIControlStateNormal)];
     [recordingButton addTarget:self action:@selector(clickRecordingButton:) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:recordingButton];
     
-    QNImageTitleButton *mixRecordingButton = [[QNImageTitleButton alloc] initWithFrame:CGRectMake(0, 0, width, height) image:[UIImage imageNamed:@"qn_select_meterial"] title:@"素材合拍"];
+    
+    UILabel *recordingLabel = [[UILabel alloc] init];
+    recordingLabel.font = [UIFont systemFontOfSize:14];
+    recordingLabel.textAlignment = NSTextAlignmentCenter;
+    recordingLabel.textColor = [UIColor whiteColor];
+    recordingLabel.text = @"视频录制";
+    [self.view addSubview:recordingLabel];
+    
+    UIButton *mixRecordingButton = [[UIButton alloc] init];
+    mixRecordingButton.clipsToBounds = YES;
+    mixRecordingButton.layer.cornerRadius = width / 2;
+    [mixRecordingButton setImage:[UIImage imageNamed:@"qn_main_merge"] forState:(UIControlStateNormal)];
+    [mixRecordingButton setBackgroundImage:bgImg forState:(UIControlStateNormal)];
     [mixRecordingButton addTarget:self action:@selector(mixRecordingButton:) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:mixRecordingButton];
+    
+    UILabel *mixRecordingLabel = [[UILabel alloc] init];
+    mixRecordingLabel.font = [UIFont systemFontOfSize:14];
+    mixRecordingLabel.textAlignment = NSTextAlignmentCenter;
+    mixRecordingLabel.textColor = [UIColor whiteColor];
+    mixRecordingLabel.text = @"素材合拍";
+    [self.view addSubview:mixRecordingLabel];
     
     CGSize size = CGSizeMake(width, height);
     [recordingButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(size);
         make.centerX.equalTo(self.view.mas_centerX);
-        make.bottom.equalTo(self.view.centerY).offset( -20);
+        make.bottom.equalTo(self.view.centerY).offset( -50);
+    }];
+    
+    [recordingLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(recordingButton);
+        make.top.equalTo(recordingButton.mas_bottom).offset(10);
     }];
     
     [mixRecordingButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(size);
         make.centerX.equalTo(self.view.mas_centerX);
         make.top.equalTo(self.view.centerY).offset(20);
+    }];
+    
+    [mixRecordingLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(mixRecordingButton);
+        make.top.equalTo(mixRecordingButton.mas_bottom).offset(10);
     }];
 }
 

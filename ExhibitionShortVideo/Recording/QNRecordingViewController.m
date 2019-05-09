@@ -27,6 +27,10 @@ QNFilterPickerViewDelegate,
 QNFaceUnityViewDelegate
 >
 
+// 用来放顶部和右侧的 button，便于做隐藏动画
+@property (nonatomic, strong) UIView *topBarView;
+@property (nonatomic, strong) UIView *rightBarView;
+
 @property (nonatomic, strong) PLShortVideoRecorder *recorder;
 
 @property (nonatomic, strong) QNFilterPickerView *filterPickerView;
@@ -46,9 +50,11 @@ QNFaceUnityViewDelegate
 @property (nonatomic, strong) QNVerticalButton *musicButton;
 @property (nonatomic, strong) QNVerticalButton *filterButton;
 @property (nonatomic, strong) QNVerticalButton *flashButton;
+@property (nonatomic, strong) QNVerticalButton *snapshotButton;
 @property (nonatomic, strong) UIButton *faceUnityButton;
 @property (nonatomic, strong) UIButton *forbidFaceUnityButton;
 
+@property (nonatomic, strong) NSURL *musicMixVideoURL;
 @property (nonatomic, strong) NSURL *musicURL;
 
 // 切换滤镜的时候，为了更好的用户体验，添加以下属性来做切换动画
@@ -84,6 +90,22 @@ QNFaceUnityViewDelegate
     [super viewDidLoad];
 
     UIView *superView = self.view;
+    self.topBarView = [[UIView alloc] init];
+    [superView addSubview:self.topBarView];
+    [self.topBarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(self.mas_topLayoutGuide);
+        make.height.equalTo(80);
+    }];
+    
+    self.rightBarView = [[UIView alloc] init];
+    [superView addSubview:self.rightBarView];
+    [self.rightBarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.view).offset(-20);
+        make.top.equalTo(self.topBarView.mas_bottom).offset(10);
+        make.width.equalTo(44);
+        make.height.equalTo(3 * 70);
+    }];
     
     self.recordingProgress = [[QNRecordingProgress alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 5)];
     
@@ -136,15 +158,6 @@ QNFaceUnityViewDelegate
     NSDictionary *dicS = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:.8 green:.2 blue:.2 alpha:1], NSForegroundColorAttributeName, [UIFont systemFontOfSize:14],NSFontAttributeName ,nil];
     [self.rateControl setTitleTextAttributes:dicS forState:UIControlStateSelected];
     
-    [superView addSubview:self.recordingProgress];
-    [superView addSubview:backButton];
-    [superView addSubview:self.faceUnityButton];
-    [superView addSubview:self.rateControl];
-    [superView addSubview:self.deleteLastButton];
-    [superView addSubview:self.nextButton];
-    [superView addSubview:self.recordingButton];
-    [superView addSubview:self.durationLabel];
-    
     self.flashButton = [[QNVerticalButton alloc] init];
     self.flashButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.flashButton setImage:[UIImage imageNamed:@"qn_flash_off"] forState:(UIControlStateNormal)];
@@ -178,27 +191,30 @@ QNFaceUnityViewDelegate
     [self.filterButton setTitle:@"滤镜" forState:(UIControlStateNormal)];
     [self.filterButton addTarget:self action:@selector(clickFilterButton:) forControlEvents:(UIControlEventTouchUpInside)];
     
-    [superView addSubview:self.flashButton];
-    [superView addSubview:self.musicButton];
-    [superView addSubview:self.cameraButton];
-    [superView addSubview:self.beautyButton];
-    [superView addSubview:self.filterButton];
+    self.snapshotButton = [[QNVerticalButton alloc] init];
+    self.snapshotButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.snapshotButton setImage:[UIImage imageNamed:@"qn_snapshot"] forState:(UIControlStateNormal)];
+    [self.snapshotButton setTitle:@"拍照" forState:(UIControlStateNormal)];
+    [self.snapshotButton addTarget:self action:@selector(clickSnapshotButton:) forControlEvents:(UIControlEventTouchUpInside)];
     
-    [self.recordingProgress mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(superView);
-        make.top.equalTo(self.mas_topLayoutGuide);
-        make.height.equalTo(5);
-    }];
+    
+    superView = self.topBarView;
+    
+    [superView addSubview:backButton];
+    [superView addSubview:self.cameraButton];
+    [superView addSubview:self.flashButton];
+    [superView addSubview:self.beautyButton];
+    [superView addSubview:self.nextButton];
     
     [backButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(CGSizeMake(44, 44));
         make.left.equalTo(superView).offset(10);
-        make.top.equalTo(self.recordingProgress.mas_bottom).offset(10);
+        make.centerY.equalTo(self.cameraButton);
     }];
     
     [self.cameraButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(backButton.mas_right).offset(20);
-        make.top.equalTo(backButton.mas_top);
+        make.bottom.equalTo(superView);
         make.size.equalTo(CGSizeMake(44, 60));
     }];
     
@@ -213,10 +229,20 @@ QNFaceUnityViewDelegate
         make.top.equalTo(self.cameraButton.mas_top);
         make.size.equalTo(self.cameraButton);
     }];
+
+    [self.nextButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.cameraButton);
+        make.size.equalTo(self.nextButton.bounds.size);
+        make.right.equalTo(superView).offset(-20);
+    }];
+    
+    superView = self.rightBarView;
+    [superView addSubview:self.musicButton];
+    [superView addSubview:self.filterButton];
+    [superView addSubview:self.snapshotButton];
     
     [self.musicButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.nextButton);
-        make.top.equalTo(self.nextButton.mas_bottom).offset(30);
+        make.top.right.equalTo(superView);
         make.size.equalTo(self.cameraButton);
     }];
     
@@ -224,6 +250,26 @@ QNFaceUnityViewDelegate
         make.right.equalTo(self.musicButton);
         make.size.equalTo(self.musicButton);
         make.top.equalTo(self.musicButton.mas_bottom).offset(10);
+    }];
+    
+    [self.snapshotButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.musicButton);
+        make.size.equalTo(self.musicButton);
+        make.top.equalTo(self.filterButton.mas_bottom).offset(10);
+    }];
+    
+    
+    superView = self.view;
+    [superView addSubview:self.faceUnityButton];
+    [superView addSubview:self.rateControl];
+    [superView addSubview:self.deleteLastButton];
+    [superView addSubview:self.recordingButton];
+    [superView addSubview:self.durationLabel];
+    [superView addSubview:self.recordingProgress];
+
+    [self.recordingProgress mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self.topBarView);
+        make.height.equalTo(5);
     }];
     
     [self.recordingButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -242,12 +288,6 @@ QNFaceUnityViewDelegate
         make.centerY.equalTo(self.recordingButton);
         make.size.equalTo(CGSizeMake(44, 44));
         make.left.equalTo(self.recordingButton.mas_right).offset(50);
-    }];
-    
-    [self.nextButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(backButton);
-        make.size.equalTo(self.nextButton.bounds.size);
-        make.right.equalTo(superView).offset(-20);
     }];
     
     [self.rateControl mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -291,6 +331,12 @@ QNFaceUnityViewDelegate
     [self.recorder deleteAllFiles];
     [self.recordingProgress deleteAllProgress];
     self.durationLabel.text = @"0s";
+    
+    //  及时删除
+    if (self.musicMixVideoURL && [[NSFileManager defaultManager] fileExistsAtPath:self.musicMixVideoURL.path]) {
+        [[NSFileManager defaultManager] removeItemAtURL:self.musicMixVideoURL error:nil];
+        self.musicMixVideoURL = nil;
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -514,6 +560,16 @@ QNFaceUnityViewDelegate
     }
 }
 
+- (void)clickSnapshotButton:(UIButton *)button {
+    button.enabled = NO;
+    __weak typeof(self) weakself = self;
+    [self.recorder getScreenShotWithCompletionHandler:^(UIImage * _Nullable image) {
+        button.enabled = YES;
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        [weakself.view showTip:@"照片已保存到相册"];
+    }];
+}
+
 - (void)clickNextButton:(UIButton *)button {
     
     if ([self.recorder getTotalDuration] < self.recorder.minDuration) {
@@ -717,7 +773,7 @@ QNFaceUnityViewDelegate
     
     self.recorder = [[PLShortVideoRecorder alloc] initWithVideoConfiguration:videoConfiguration audioConfiguration:audioConfiguration];
     self.recorder.delegate = self;
-    self.recorder.maxDuration = 15;
+    self.recorder.maxDuration = 10;
     
     // 如果设置为 YES，在录制的状态下进入后台，回到前台的时候，自动开始录制
     self.recorder.backgroundMonitorEnable = NO;
@@ -805,8 +861,8 @@ QNFaceUnityViewDelegate
         // MusicVolume：1.0，videoVolume:0.0 即完全丢弃掉拍摄时的所有声音，只保留背景音乐的声音
         [self.recorder mixWithMusicVolume:1.0 videoVolume:0.0 completionHandler:^(AVMutableComposition * _Nullable composition, AVAudioMix * _Nullable audioMix, NSError * _Nullable error) {
             AVAssetExportSession *exporter = [[AVAssetExportSession alloc]initWithAsset:composition presetName:AVAssetExportPresetHighestQuality];
-            NSURL *outputPath = [self exportAudioMixPath];
-            exporter.outputURL = outputPath;
+            weakself.musicMixVideoURL = [weakself exportAudioMixPath];
+            exporter.outputURL = weakself.musicMixVideoURL;
             exporter.outputFileType = AVFileTypeMPEG4;
             exporter.shouldOptimizeForNetworkUse= YES;
             exporter.audioMix = audioMix;
@@ -819,8 +875,8 @@ QNFaceUnityViewDelegate
                         [self showAlertMessage:nil message:@"取消了背景音乐"];
                     } break;
                     case AVAssetExportSessionStatusCompleted: {
-                        fileURLs = @[outputPath];
-                        movieAsset = [AVAsset assetWithURL:outputPath];
+                        fileURLs = @[weakself.musicMixVideoURL];
+                        movieAsset = [AVAsset assetWithURL:weakself.musicMixVideoURL];
                     } break;
                     default: {
                         
@@ -894,10 +950,10 @@ QNFaceUnityViewDelegate
     
     self.deleteLastButton.selected = NO;
     
-    [self.musicButton alphaHideAnimation];
-    [self.deleteLastButton alphaHideAnimation];
-    [self.nextButton alphaHideAnimation];
+    [self.topBarView alphaHideAnimation];
+    [self.rightBarView alphaHideAnimation];
     [self.rateControl alphaHideAnimation];
+    [self.deleteLastButton alphaHideAnimation];
 }
 
 // 正在录制的过程中
@@ -920,9 +976,9 @@ QNFaceUnityViewDelegate
     
     self.recordingButton.selected = NO;
     
-    [self.musicButton alphaShowAnimation];
     [self.deleteLastButton alphaShowAnimation];
-    [self.nextButton alphaShowAnimation];
+    [self.topBarView alphaShowAnimation];
+    [self.rightBarView alphaShowAnimation];
     [self.rateControl alphaShowAnimation];
     
     self.durationLabel.text = [NSString stringWithFormat:@"%0.1f s", MAX(0, totalDuration)];

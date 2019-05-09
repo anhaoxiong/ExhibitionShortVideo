@@ -20,6 +20,11 @@ QNFilterPickerViewDelegate,
 UIGestureRecognizerDelegate
 >
 
+// 用来放顶部和右侧的 button，便于做隐藏动画
+@property (nonatomic, strong) UIView *topBarView;
+@property (nonatomic, strong) UIView *rightBarView;
+
+
 @property (nonatomic, strong) PLSVideoMixRecorder *mixRecorder;
 @property (nonatomic, strong) QNFilterPickerView *filterPickerView;
 @property (nonatomic, weak)   QNFilterGroup *filterGroup;
@@ -58,6 +63,155 @@ UIGestureRecognizerDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIView *superView = self.view;
+    self.topBarView = [[UIView alloc] init];
+    [superView addSubview:self.topBarView];
+    [self.topBarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(self.mas_topLayoutGuide);
+        make.height.equalTo(80);
+    }];
+    
+    self.rightBarView = [[UIView alloc] init];
+    [superView addSubview:self.rightBarView];
+    [self.rightBarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.view).offset(-20);
+        make.top.equalTo(self.topBarView.mas_bottom).offset(10);
+        make.width.equalTo(44);
+        make.height.equalTo(70);
+    }];
+    
+    self.recordingProgress = [[QNRecordingProgress alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 5)];
+    
+    UIButton *backButton = [UIButton buttonWithType:(UIButtonTypeSystem)];
+    [backButton setTintColor:UIColor.whiteColor];
+    [backButton setImage:[UIImage imageNamed:@"qn_icon_close"] forState:(UIControlStateNormal)];
+    [backButton addTarget:self action:@selector(clickBackButton) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    self.recordingButton = [[UIButton alloc] init];
+    self.recordingButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.recordingButton setBackgroundImage:[UIImage imageNamed:@"qn_recording"] forState:(UIControlStateNormal)];
+    [self.recordingButton setTitle:@"点击拍摄" forState:(UIControlStateNormal)];
+    [self.recordingButton setTitle:@"停止拍摄" forState:(UIControlStateSelected)];
+    [self.recordingButton addTarget:self action:@selector(clickRecordingButton:) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    self.deleteLastButton = [[UIButton alloc] init];
+    [self.deleteLastButton setImage:[UIImage imageNamed:@"qn_btn_del_a"] forState:(UIControlStateNormal)];
+    [self.deleteLastButton setImage:[UIImage imageNamed:@"qn_btn_del_active_a"] forState:(UIControlStateSelected)];
+    [self.deleteLastButton addTarget:self action:@selector(clickDeleteButton:) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    self.durationLabel = [[UILabel alloc] init];
+    self.durationLabel.textAlignment = NSTextAlignmentCenter;
+    self.durationLabel.font = [UIFont monospacedDigitSystemFontOfSize:14 weight:(UIFontWeightRegular)];
+    self.durationLabel.textColor = [UIColor whiteColor];
+    
+    self.nextButton = [[UIButton alloc] init];
+    [self.nextButton setImage:[UIImage imageNamed:@"qn_next_button"] forState:(UIControlStateNormal)];
+    [self.nextButton addTarget:self action:@selector(clickNextButton:) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.nextButton sizeToFit];
+    
+    self.flashButton = [[QNVerticalButton alloc] init];
+    self.flashButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.flashButton setImage:[UIImage imageNamed:@"qn_flash_off"] forState:(UIControlStateNormal)];
+    [self.flashButton setImage:[UIImage imageNamed:@"qn_flash_on"] forState:(UIControlStateSelected)];
+    [self.flashButton setTitle:@"补光" forState:(UIControlStateNormal)];
+    [self.flashButton addTarget:self action:@selector(clickFlashButton:) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    self.beautyButton = [[QNVerticalButton alloc] init];
+    self.beautyButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.beautyButton setImage:[UIImage imageNamed:@"qn_record_beauty"] forState:(UIControlStateNormal)];
+    [self.beautyButton setImage:[UIImage imageNamed:@"qn_record_beauty_on"] forState:(UIControlStateSelected)];
+    [self.beautyButton setTitle:@"美颜" forState:(UIControlStateNormal)];
+    [self.beautyButton addTarget:self action:@selector(clickBeautyButton:) forControlEvents:(UIControlEventTouchUpInside)];
+    self.beautyButton.selected = YES;
+    
+    self.cameraButton = [[QNVerticalButton alloc] init];
+    self.cameraButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.cameraButton setImage:[UIImage imageNamed:@"qn_switch_camera"] forState:(UIControlStateNormal)];
+    [self.cameraButton setTitle:@"切换" forState:(UIControlStateNormal)];
+    [self.cameraButton addTarget:self action:@selector(clickCameraButton:) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    self.filterButton = [[QNVerticalButton alloc] init];
+    self.filterButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.filterButton setImage:[UIImage imageNamed:@"qn_filter"] forState:(UIControlStateNormal)];
+    [self.filterButton setTitle:@"滤镜" forState:(UIControlStateNormal)];
+    [self.filterButton addTarget:self action:@selector(clickFilterButton:) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    superView = self.topBarView;
+    
+    [superView addSubview:backButton];
+    [superView addSubview:self.cameraButton];
+    [superView addSubview:self.flashButton];
+    [superView addSubview:self.beautyButton];
+    [superView addSubview:self.nextButton];
+    
+    [backButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(CGSizeMake(44, 44));
+        make.left.equalTo(superView).offset(10);
+        make.centerY.equalTo(self.cameraButton);
+    }];
+    
+    [self.cameraButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(backButton.mas_right).offset(20);
+        make.bottom.equalTo(superView);
+        make.size.equalTo(CGSizeMake(44, 60));
+    }];
+    
+    [self.flashButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.cameraButton.mas_right).offset(10);
+        make.top.equalTo(self.cameraButton);
+        make.size.equalTo(self.cameraButton);
+    }];
+    
+    [self.beautyButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.flashButton.mas_right).offset(10);
+        make.top.equalTo(self.cameraButton.mas_top);
+        make.size.equalTo(self.cameraButton);
+    }];
+    
+    [self.nextButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.cameraButton);
+        make.size.equalTo(self.nextButton.bounds.size);
+        make.right.equalTo(superView).offset(-20);
+    }];
+    
+    superView = self.rightBarView;
+    [superView addSubview:self.filterButton];
+    
+    [self.filterButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.right.equalTo(superView);
+        make.size.equalTo(self.cameraButton);
+    }];
+    
+    superView = self.view;
+    [superView addSubview:self.deleteLastButton];
+    [superView addSubview:self.recordingButton];
+    [superView addSubview:self.durationLabel];
+    [superView addSubview:self.recordingProgress];
+    
+    [self.recordingProgress mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self.topBarView);
+        make.height.equalTo(5);
+    }];
+    
+    [self.recordingButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(superView);
+        make.size.equalTo(CGSizeMake(80, 80));
+        make.bottom.equalTo(self.mas_bottomLayoutGuide).offset(-40);
+    }];
+    
+    [self.deleteLastButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.recordingButton);
+        make.size.equalTo(CGSizeMake(44, 44));
+        make.left.equalTo(self.recordingButton.mas_right).offset(50);
+    }];
+    
+    [self.durationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.recordingButton.centerX);
+        make.bottom.equalTo(self.recordingButton.mas_top).offset(-5);
+    }];
+    
+    /*
     UIView *superView = self.view;
     
     self.recordingProgress = [[QNRecordingProgress alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 5)];
@@ -186,7 +340,7 @@ UIGestureRecognizerDelegate
         make.centerX.equalTo(self.recordingButton.centerX);
         make.bottom.equalTo(self.recordingButton.mas_top).offset(-5);
     }];
-    
+    */
     [self setupMixRecorder];
     [self setupFilter];
     
@@ -645,8 +799,11 @@ UIGestureRecognizerDelegate
     [self.recordingProgress startShining];
     
     self.deleteLastButton.selected = NO;
-    self.deleteLastButton.hidden = YES;
-    self.nextButton.hidden = YES;
+    
+    [self.topBarView alphaHideAnimation];
+    [self.rightBarView alphaHideAnimation];
+    [self.deleteLastButton alphaHideAnimation];
+
 }
 
 // 正在录制的过程中
@@ -661,8 +818,10 @@ UIGestureRecognizerDelegate
     
     [self.recordingProgress stopShining];
     
-    self.nextButton.hidden = NO;
-    self.deleteLastButton.hidden = NO;
+    [self.topBarView alphaShowAnimation];
+    [self.rightBarView alphaShowAnimation];
+    [self.deleteLastButton alphaShowAnimation];
+
     self.recordingButton.selected = NO;
     
     if (self.fileEndDecoding) {

@@ -55,14 +55,14 @@ PLShortVideoUploaderDelegate
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.textColor = [UIColor lightTextColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.text = @"滑动红框选择封面范围";
+    titleLabel.text = @"滑动红框选择照片范围";
     titleLabel.font = [UIFont systemFontOfSize:14];
     [self.gradientBar addSubview:titleLabel];
     
     UILabel *label = [[UILabel alloc] init];
     label.textColor = [UIColor lightTextColor];
     label.textAlignment = NSTextAlignmentCenter;
-    label.text = @"滑动滑块选择封面";
+    label.text = @"滑动滑块选择照片";
     label.font = [UIFont systemFontOfSize:14];
     
     UIButton *backButton = [UIButton buttonWithType:(UIButtonTypeSystem)];
@@ -383,7 +383,7 @@ PLShortVideoUploaderDelegate
     NSError *error = nil;
     CGImageRef originImage = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:&error];
     if (!originImage) {
-        [self showAlertMessage:@"提示" message:@"获取封面发生错误了，重新选择封面试试"];
+        [self showAlertMessage:@"提示" message:@"获取照片发生错误了，重新选择照片试试"];
         return;
     }
     CGSize originPictureSize = CGSizeMake(CGImageGetWidth(originImage), CGImageGetHeight(originImage));
