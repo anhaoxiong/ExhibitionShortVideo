@@ -79,6 +79,20 @@ QBImagePickerControllerDelegate
         make.centerX.equalTo(mixRecordingButton);
         make.top.equalTo(mixRecordingButton.mas_bottom).offset(10);
     }];
+    
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+    NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
+    UILabel *versionLabe = [[UILabel alloc] init];
+    versionLabe.font = [UIFont systemFontOfSize:14];
+    versionLabe.textColor = [UIColor lightTextColor];
+    versionLabe.textAlignment = NSTextAlignmentCenter;
+    versionLabe.text = [NSString stringWithFormat:@"版本信息: %@", version];
+    [self.view addSubview:versionLabe];
+    
+    [versionLabe mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.bottom.equalTo(self.mas_bottomLayoutGuide).offset(-10);
+    }];
 }
 
 - (void)clickRecordingButton:(UIButton *)button {

@@ -1578,12 +1578,12 @@
 		BCFC8D0F22812D860012288F /* FaceUnityUI */ = {
 			isa = PBXGroup;
 			children = (
-				BCFC8D1022812D860012288F /* QNFaceUnityView.m */,
 				BCFC8D1122812D860012288F /* QNFaceUnityBeautyView.h */,
-				BCFC8D1222812D860012288F /* QNFaceUnityMakeUpView.h */,
-				BCFC8D1322812D860012288F /* QNFaceUnityView.h */,
-				BCFC8D1422812D860012288F /* QNFaceUnityMakeUpView.m */,
 				BCFC8D1522812D860012288F /* QNFaceUnityBeautyView.m */,
+				BCFC8D1222812D860012288F /* QNFaceUnityMakeUpView.h */,
+				BCFC8D1422812D860012288F /* QNFaceUnityMakeUpView.m */,
+				BCFC8D1322812D860012288F /* QNFaceUnityView.h */,
+				BCFC8D1022812D860012288F /* QNFaceUnityView.m */,
 			);
 			path = FaceUnityUI;
 			sourceTree = "<group>";
