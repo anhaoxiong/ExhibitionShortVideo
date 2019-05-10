@@ -107,7 +107,9 @@ QNFaceUnityViewDelegate
         make.height.equalTo(3 * 70);
     }];
     
-    self.recordingProgress = [[QNRecordingProgress alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 5)];
+    self.recordingProgress = [[QNRecordingProgress alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width - 10, 5)];
+    self.recordingProgress.layer.cornerRadius = 2.5;
+    self.recordingProgress.clipsToBounds = YES;
     
     UIButton *backButton = [UIButton buttonWithType:(UIButtonTypeSystem)];
     [backButton setTintColor:UIColor.whiteColor];
@@ -268,7 +270,9 @@ QNFaceUnityViewDelegate
     [superView addSubview:self.recordingProgress];
 
     [self.recordingProgress mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.equalTo(self.topBarView);
+        make.width.equalTo(self.topBarView).offset(-10);
+        make.centerX.equalTo(self.topBarView);
+        make.top.equalTo(self.mas_topLayoutGuide).offset(5);
         make.height.equalTo(5);
     }];
     

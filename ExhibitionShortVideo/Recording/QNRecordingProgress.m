@@ -60,7 +60,7 @@
 
 - (UIView *)getProgressView {
     UIView *progressView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, _barHeight)];
-    progressView.backgroundColor = [UIColor colorWithRed:229.0/255 green:61.0/255 blue:146.0/255 alpha:1];
+    progressView.backgroundColor = [UIColor whiteColor];
     progressView.autoresizesSubviews = YES;
     
     return progressView;
@@ -137,7 +137,7 @@
     switch (style) {
         case enumProgressStyleNormal:
         {
-            lastProgressView.backgroundColor = [UIColor colorWithRed:229.0/255 green:61.0/255 blue:146.0/255 alpha:1];
+            lastProgressView.backgroundColor = [UIColor whiteColor];
             _progressIndicator.hidden = YES;
         }
             break;
