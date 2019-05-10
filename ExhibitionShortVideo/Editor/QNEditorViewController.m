@@ -494,7 +494,7 @@ TuSDKFilterProcessorMediaEffectDelegate
     NSArray *array = [NSArray arrayWithObjects:buttons count:count];
     [array mas_distributeViewsAlongAxis:(MASAxisTypeHorizontal) withFixedSpacing:0 leadSpacing:20 tailSpacing:20];
     [array mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.bottomBarView);
+        make.top.equalTo(self.bottomBarView);
         make.height.equalTo(height);
     }];
 #endif

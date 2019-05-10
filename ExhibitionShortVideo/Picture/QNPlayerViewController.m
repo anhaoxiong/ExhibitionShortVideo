@@ -32,6 +32,7 @@ PLShortVideoUploaderDelegate
 @property (nonatomic, strong) UIView *scopeBackgroundView;;
 @property (nonatomic, strong) UIView *scopeView;
 @property (nonatomic, strong) UIImage *picture;
+@property (nonatomic, strong) AVAsset *asset;
 
 @property (strong, nonatomic) PLShortVideoUploader *shortVideoUploader;
 @property (strong, nonatomic) NSString *remoteVideoURL;
@@ -137,7 +138,6 @@ PLShortVideoUploaderDelegate
     }];
     
     [self setupPlayer];
-    [self getThumbImage];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -151,7 +151,7 @@ PLShortVideoUploaderDelegate
     
     self.thumbArray = [[NSMutableArray alloc] init];
     
-    CGFloat duration = CMTimeGetSeconds(self.player.currentItem.duration);
+    CGFloat duration = CMTimeGetSeconds(self.asset.duration);
     NSUInteger count = duration;
     count = 10;
     
@@ -185,8 +185,8 @@ PLShortVideoUploaderDelegate
 
 - (void)setupPlayer {
     
-    AVAsset *asset = [AVAsset assetWithURL:self.url];
-    AVPlayerItem *item = [AVPlayerItem playerItemWithAsset:asset];
+    self.asset = [AVAsset assetWithURL:self.url];
+    AVPlayerItem *item = [AVPlayerItem playerItemWithAsset:self.asset];
     self.player = [AVPlayer playerWithPlayerItem:item];
     self.playerView = [[QNPlayerView alloc] init];
     self.playerView.player = self.player;
@@ -196,6 +196,12 @@ PLShortVideoUploaderDelegate
         make.left.right.equalTo(self.view);
         make.bottom.equalTo(self.collectionView.mas_top).offset(-30);
         make.top.equalTo(self.gradientBar.mas_bottom).offset(20);
+    }];
+    
+    [self.asset loadValuesAsynchronouslyForKeys:@[@"duration", @"tracks"] completionHandler:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self getThumbImage];
+        });
     }];
 }
 
