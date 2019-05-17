@@ -39,8 +39,6 @@
 
 - (void)setNextFilterIndex:(NSInteger)nextFilterIndex {
     _nextFilterIndex = nextFilterIndex;
-//    self.nextFilter = [[PLSFilter alloc] init];
-//    NSLog(@"setNextFilterIndex: n = %ld, c = %ld", (long)nextFilterIndex, (long)_filterIndex);
     self.nextFilter.colorImagePath = _colorFilterArray[nextFilterIndex];
 }
 
@@ -53,8 +51,6 @@
         self.nextFilter = [[PLSFilter alloc] init];
         
         [self setupFilter];
-        [self.currentFilter setColorImagePath:_colorFilterArray[2]];
-        [self.nextFilter setColorImagePath:_colorFilterArray[3]];
     }
     return self;
 }

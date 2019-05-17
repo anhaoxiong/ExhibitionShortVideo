@@ -4,6 +4,14 @@ PODS:
   - Masonry (1.1.0)
   - MMMaterialDesignSpinner (0.2.5)
   - Nama (6.0.0)
+  - PLShortVideoKit (2.1.0):
+    - PLShortVideoKit/ex-libMuseProcessor (= 2.1.0)
+    - PLShortVideoKit/libMuseProcessor (= 2.1.0)
+    - Qiniu (= 7.2.5)
+  - PLShortVideoKit/ex-libMuseProcessor (2.1.0):
+    - Qiniu (= 7.2.5)
+  - PLShortVideoKit/libMuseProcessor (2.1.0):
+    - Qiniu (= 7.2.5)
   - Qiniu (7.2.5):
     - HappyDNS (~> 0.3)
 
@@ -12,6 +20,7 @@ DEPENDENCIES:
   - Masonry
   - MMMaterialDesignSpinner
   - Nama (= 6.0.0)
+  - PLShortVideoKit
   - Qiniu
 
 SPEC REPOS:
@@ -21,6 +30,7 @@ SPEC REPOS:
     - Masonry
     - MMMaterialDesignSpinner
     - Nama
+    - PLShortVideoKit
     - Qiniu
 
 SPEC CHECKSUMS:
@@ -29,8 +39,9 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MMMaterialDesignSpinner: a548042720c2e5f04212048483085d7942ac3e81
   Nama: b952a3a83dd89651d35a27d5d44f58afff2f1a33
+  PLShortVideoKit: 03a936d7d23d5c437aad4dee93d57f7a554aeb48
   Qiniu: 909b408ee489ea54827e9717be90b94bc9dfbc48
 
-PODFILE CHECKSUM: c872d8b05470978d6577850a0bcd31aa15dadd58
+PODFILE CHECKSUM: 976995e6e8543ff93b3f768c2d12485eb2d10481
 
 COCOAPODS: 1.5.3

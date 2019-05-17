@@ -11,4 +11,5 @@ target 'ExhibitionShortVideo' do
   pod 'MMMaterialDesignSpinner'
   pod 'JGProgressHUD'
   pod 'Nama', '6.0.0'
+  pod 'PLShortVideoKit'
 end

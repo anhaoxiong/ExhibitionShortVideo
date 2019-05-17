@@ -559,50 +559,11 @@
 		BCFC910622812D870012288F /* QNBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFC8EFA22812D870012288F /* QNBaseViewController.m */; };
 		BCFC910722812D870012288F /* QNPanImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFC8EFB22812D870012288F /* QNPanImageView.m */; };
 		BCFC910822812D870012288F /* QNMusicDecibelView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFC8EFC22812D870012288F /* QNMusicDecibelView.m */; };
-		BCFC9127228133DA0012288F /* PLShortVideoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFC911D228130750012288F /* PLShortVideoKit.framework */; };
 		BCFC91292281344F0012288F /* PLShortVideoKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCFC91282281344F0012288F /* PLShortVideoKit.bundle */; };
 		BCFC912C228158050012288F /* QNAudioVolumeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFC912B228158050012288F /* QNAudioVolumeView.m */; };
 		BCFC914D228179D10012288F /* QNPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFC914C228179D10012288F /* QNPlayerViewController.m */; };
 		BCFC9150228179E70012288F /* QNPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFC914F228179E70012288F /* QNPictureViewController.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		BCFC911C228130750012288F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BCFC9110228130750012288F /* PLShortVideoKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0A9435A01E6CA32F008845A3;
-			remoteInfo = PLShortVideoKit;
-		};
-		BCFC911E228130750012288F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BCFC9110228130750012288F /* PLShortVideoKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCD9A496221FD48B009A7315;
-			remoteInfo = PLShortVideoCoreKit;
-		};
-		BCFC9120228130750012288F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BCFC9110228130750012288F /* PLShortVideoKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC277D652238DE7B004137ED;
-			remoteInfo = PLShortVideoBasicKit;
-		};
-		BCFC9122228130750012288F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BCFC9110228130750012288F /* PLShortVideoKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCF95E81223B462600D87795;
-			remoteInfo = PLShortVideoStandardKit;
-		};
-		BCFC9124228130850012288F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BCFC9110228130750012288F /* PLShortVideoKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 0A94359F1E6CA32F008845A3;
-			remoteInfo = PLShortVideoKit;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		33E9A5D8B81C04F8F5BB741B /* Pods-ExhibitionShortVideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExhibitionShortVideo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExhibitionShortVideo/Pods-ExhibitionShortVideo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1241,7 +1202,6 @@
 		BCFC8EFA22812D870012288F /* QNBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNBaseViewController.m; sourceTree = "<group>"; };
 		BCFC8EFB22812D870012288F /* QNPanImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNPanImageView.m; sourceTree = "<group>"; };
 		BCFC8EFC22812D870012288F /* QNMusicDecibelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNMusicDecibelView.m; sourceTree = "<group>"; };
-		BCFC9110228130750012288F /* PLShortVideoKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PLShortVideoKit.xcodeproj; path = "../pili-short-video-kit/iOS/PLShortVideoKit/PLShortVideoKit.xcodeproj"; sourceTree = "<group>"; };
 		BCFC91282281344F0012288F /* PLShortVideoKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PLShortVideoKit.bundle; sourceTree = "<group>"; };
 		BCFC912A228158050012288F /* QNAudioVolumeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QNAudioVolumeView.h; sourceTree = "<group>"; };
 		BCFC912B228158050012288F /* QNAudioVolumeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QNAudioVolumeView.m; sourceTree = "<group>"; };
@@ -1257,7 +1217,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCFC9127228133DA0012288F /* PLShortVideoKit.framework in Frameworks */,
 				BCFC909822812D870012288F /* TuSDKVideo.framework in Frameworks */,
 				BCFC909922812D870012288F /* TuSDKFace.framework in Frameworks */,
 				BCFC909A22812D870012288F /* libyuv.framework in Frameworks */,
@@ -1290,7 +1249,6 @@
 		BCFC8C41228128CD0012288F = {
 			isa = PBXGroup;
 			children = (
-				BCFC9110228130750012288F /* PLShortVideoKit.xcodeproj */,
 				BCFC8C4C228128CD0012288F /* ExhibitionShortVideo */,
 				BCFC8C4B228128CD0012288F /* Products */,
 				5A86E25A94D0DB61840C34E0 /* Pods */,
@@ -2360,17 +2318,6 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		BCFC9111228130750012288F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BCFC911D228130750012288F /* PLShortVideoKit.framework */,
-				BCFC911F228130750012288F /* PLShortVideoKit.framework */,
-				BCFC9121228130750012288F /* PLShortVideoKit.framework */,
-				BCFC9123228130750012288F /* PLShortVideoKit.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		BCFC9143228179AF0012288F /* Picture */ = {
 			isa = PBXGroup;
 			children = (
@@ -2398,7 +2345,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BCFC9125228130850012288F /* PBXTargetDependency */,
 			);
 			name = ExhibitionShortVideo;
 			productName = ExhibitionShortVideo;
@@ -2435,49 +2381,12 @@
 			mainGroup = BCFC8C41228128CD0012288F;
 			productRefGroup = BCFC8C4B228128CD0012288F /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = BCFC9111228130750012288F /* Products */;
-					ProjectRef = BCFC9110228130750012288F /* PLShortVideoKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				BCFC8C49228128CD0012288F /* ExhibitionShortVideo */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		BCFC911D228130750012288F /* PLShortVideoKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PLShortVideoKit.framework;
-			remoteRef = BCFC911C228130750012288F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BCFC911F228130750012288F /* PLShortVideoKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PLShortVideoKit.framework;
-			remoteRef = BCFC911E228130750012288F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BCFC9121228130750012288F /* PLShortVideoKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PLShortVideoKit.framework;
-			remoteRef = BCFC9120228130750012288F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BCFC9123228130750012288F /* PLShortVideoKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PLShortVideoKit.framework;
-			remoteRef = BCFC9122228130750012288F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BCFC8C48228128CD0012288F /* Resources */ = {
@@ -3107,14 +3016,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		BCFC9125228130850012288F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PLShortVideoKit;
-			targetProxy = BCFC9124228130850012288F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BCFC8C58228128D00012288F /* LaunchScreen.storyboard */ = {
