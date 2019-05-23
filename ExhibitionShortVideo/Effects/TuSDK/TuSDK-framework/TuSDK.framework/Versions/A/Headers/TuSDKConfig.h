@@ -60,6 +60,11 @@
 @property (nonatomic) BOOL smudgeEnabled;
 
 /**
+ *  画笔涂抹
+ */
+@property (nonatomic) BOOL paintEnabled;
+
+/**
  *  smudge and filter
  */
 @property (nonatomic) BOOL wipeFilterEnabled;
@@ -145,6 +150,12 @@
 @property (nonatomic) BOOL videoCameraBitrateSupport;
 
 /**
+ video camera monster effect support 哈哈镜
+ @since v3.0.7
+ */
+@property (nonatomic) BOOL videoCameraMonsterFaceSupport;
+
+/**
  video editor music support
  */
 @property (nonatomic) BOOL videoEditorMusicSupport;
@@ -192,6 +203,12 @@
 @property (nonatomic) BOOL videoEditorComicEffectsSupport;
 
 /**
+ video editor monster effect support 哈哈镜
+ @since v3.0.7
+ */
+@property (nonatomic) BOOL videoEditorMonsterFaceSupport;
+
+/**
  音频变声权限
  @since v3.0.1
  */
@@ -202,6 +219,12 @@
  @since v3.0.1
  */
 @property (nonatomic) BOOL audioResampleEffectsSupport;
+
+/**
+ video editor image sticker effect support 哈哈镜
+ @since v3.0.7
+ */
+@property (nonatomic) BOOL videoEditorImageStickerSupport;
 
 /**
  *  Filter list which could be used by FilterAPI
@@ -215,6 +238,12 @@
  *  Sdk配置
  */
 @interface TuSDKConfig : TuSDKDataJson
+
+/**
+ appType 标识 SDK 类型 [图像，视频，直播]
+ */
+@property (nonatomic) NSNumber *appType;
+
 /**
  *  滤镜分组列表
  */

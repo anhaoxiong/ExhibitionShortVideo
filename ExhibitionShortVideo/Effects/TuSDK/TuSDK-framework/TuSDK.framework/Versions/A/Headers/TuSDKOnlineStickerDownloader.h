@@ -21,7 +21,7 @@
  *
  *  @param stickerGroupId 贴纸组id
  *  @param progress 下载进度
- *  @param changedStatus 下载状态
+ *  @param status 下载状态
  */
 - (void)onDownloadProgressChanged:(uint64_t) stickerGroupId
                          progress:(CGFloat )progress
@@ -74,7 +74,7 @@
 /**
  *  取消下载贴纸
  *
- *  @param idt 贴纸组ID
+ *  @param groupId 贴纸组ID
  */
 - (void)cancelDownloadWithGroupId:(uint64_t)groupId;
 

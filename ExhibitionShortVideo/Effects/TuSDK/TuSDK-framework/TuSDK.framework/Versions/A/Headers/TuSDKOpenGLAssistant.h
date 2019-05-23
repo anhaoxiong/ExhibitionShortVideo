@@ -9,6 +9,7 @@
 
 #ifndef TuSDKOpenGLAssistant_h
 #define TuSDKOpenGLAssistant_h
+#import "TuSDKGPUImageHelper.h"
 
 /** 正常角度不旋转 */
 static GLfloat lsqNoRotationTextureCoordinates[] = {

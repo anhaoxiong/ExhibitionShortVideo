@@ -10,7 +10,7 @@
 
 /**
  特效数据类型
-
+ 
  - TuSDKMediaEffectDataTypeFilter: 滤镜特效
  - TuSDKMediaEffectDataTypeAudio: 音频特效
  - TuSDKMediaEffectDataTypeSticker: 贴纸特效
@@ -18,7 +18,11 @@
  - TuSDKMediaEffectDataTypeScene: 场景特效
  - TuSDKMediaEffectDataTypeParticle: 粒子特效
  - TuSDKMediaEffectDataTypeStickerText: 字幕贴纸特效
+ - TuSDKMediaEffectDataTypeStickerImage: 图片贴纸特效
  - TuSDKMediaEffectDataTypeComic : 漫画特效
+ - TuSDKMediaEffectDataTypePlasticFace : 微整形
+ - TuSDKMediaEffectDataTypeSkinFace : 美肤特效
+ - TuSDKMediaEffectDataTypeMonsterFace : 哈哈镜特效
  */
 typedef NS_ENUM(NSUInteger,TuSDKMediaEffectDataType)
 {
@@ -29,5 +33,10 @@ typedef NS_ENUM(NSUInteger,TuSDKMediaEffectDataType)
     TuSDKMediaEffectDataTypeScene,
     TuSDKMediaEffectDataTypeParticle,
     TuSDKMediaEffectDataTypeStickerText,
-    TuSDKMediaEffectDataTypeComic
+    TuSDKMediaEffectDataTypeStickerImage,
+    TuSDKMediaEffectDataTypeComic,
+    TuSDKMediaEffectDataTypePlasticFace,
+    TuSDKMediaEffectDataTypeSkinFace,
+    TuSDKMediaEffectDataTypeMonsterFace,
+
 };

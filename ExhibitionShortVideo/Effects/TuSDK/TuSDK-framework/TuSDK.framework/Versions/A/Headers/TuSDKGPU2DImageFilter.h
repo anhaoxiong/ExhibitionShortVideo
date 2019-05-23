@@ -8,24 +8,25 @@
 
 #import <Foundation/Foundation.h>
 #import "TuSDKFilterAdapter.h"
-#import "TuSDKTextStickerImage.h"
+#import "TuSDK2DImageSticker.h"
 
 /**
- 2D 文字贴纸
- @since v2.2.0
+ GIF贴纸
+ @since v3.3.2
  */
-@interface TuSDKGPUText2DFilter : TuSDKFilter
+@interface TuSDKGPU2DImageFilter : TuSDKFilter
+
 /**
- 文字贴纸纹理管理对象
- @since v2.2.0
+ 贴纸纹理管理对象
+ @since v3.3.2
  */
-@property (nonatomic,strong) TuSDKTextStickerImage *text2DStickerImage;
+@property (nonatomic,strong) TuSDK2DImageSticker *stickerImage;
 
 /**
  设置显示区域和视图比例
  @param displayRect 显示区域
  @param ratio 画面尺寸
- @since v2.2.0
+ @since v3.3.2
  */
 - (void)setDisplayRect:(CGRect)displayRect withRatio:(CGFloat)ratio;
 

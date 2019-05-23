@@ -4,7 +4,7 @@
 //
 //  Created by Clear Hu on 14/10/25.
 //  Copyright (c) 2014年 tusdk.com. All rights reserved.
-//  https://tutucloud.com/docs/ios/api/
+//  https://tutucloud.com/docs/ios/image/api-core/
 //
 
 #import <Foundation/Foundation.h>
@@ -111,6 +111,11 @@
 #import "TuSDKPFSmudgeViewBase.h"
 #import "TuSDKPFBrushBarViewBase.h"
 
+#import "TuSDKOpenGLAssistant.h"
+#import "TuSDKTextureCoordinateCropBuilder.h"
+#import "TuSDKVerticeCoordinateBuilder.h"
+#import "SLGL2DTextureProgram.h"
+
 #import "TuSDKTKThread.h"
 #import "TuSDKVideoCameraInterface.h"
 
@@ -133,7 +138,7 @@
 #import "TuSDKOnlineStickerFetcher.h"
 #import "TuSDKOnlineStickerDownloader.h"
 
-#import "TuSDKTextStickerImage.h"
+#import "TuSDKGPU2DImageFilter.h"
 
 
 #import "TuSDKNKNetworkEngine.h"
@@ -176,7 +181,7 @@ extern NSString * const lsqFilterSampleExtension;
 
 /**
  *  TuSDK 核心
- *  @see-https://tutucloud.com/docs/ios/api/Classes/TuSDK.html
+ *  @see-https://tutucloud.com/docs/ios/image/api-core/Classes/TuSDK.html
  *
  *  内部集成滤镜列表(17):
  *  Normal, Artistic, Brilliant, Cheerful, Clear, Fade, Forest, Gloss,
@@ -259,7 +264,7 @@ extern NSString * const lsqFilterSampleExtension;
 
 /**
  *  滤镜管理器
- *  @see-https://tutucloud.com/docs/ios/api/Classes/TuSDKFilterManager.html
+ *  @see-https://tutucloud.com/docs/ios/image/api-core/Classes/TuSDKFilterManager.html
  *
  *  @return filterManager 滤镜管理器
  */
@@ -267,7 +272,7 @@ extern NSString * const lsqFilterSampleExtension;
 
 /**
  *  贴纸管理器
- *  @see-https://tutucloud.com/docs/ios/api/Classes/TuSDKPFStickerLocalPackage.html
+ *  @see-https://tutucloud.com/docs/ios/image/api-core/Classes/TuSDKPFStickerLocalPackage.html
  *
  *  @return stickerManager 贴纸管理器
  */
@@ -282,12 +287,12 @@ extern NSString * const lsqFilterSampleExtension;
 
 /**
  *  相机对象
- *  @see-https://tutucloud.com/docs/ios/api/Classes/TuSDKStillCamera.html
+ *  @see-https://tutucloud.com/docs/ios/image/api-core/Classes/TuSDKStillCamera.html
  *
  *  @param sessionPreset  相机分辨率类型 
  *  @see AVCaptureSessionPresetPhoto
  *  @param cameraPosition 相机设备标识 （前置或后置）
- *  @param cameraView     相机显示容器视图
+ *  @param view     相机显示容器视图
  *
  *  @return 相机对象
  */
